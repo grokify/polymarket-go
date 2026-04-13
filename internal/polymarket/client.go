@@ -68,6 +68,33 @@ func NewClient(opts ...ClientOption) *Client {
 	return c
 }
 
+// doGet performs a GET request and decodes the JSON response into result.
+func (c *Client) doGet(ctx context.Context, url string, result any) error {
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+	if err != nil {
+		return fmt.Errorf("creating request: %w", err)
+	}
+
+	req.Header.Set("Accept", "application/json")
+
+	resp, err := c.httpClient.Do(req)
+	if err != nil {
+		return fmt.Errorf("executing request: %w", err)
+	}
+	defer func() { _ = resp.Body.Close() }()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return fmt.Errorf("API error: status %d, body: %s", resp.StatusCode, string(body))
+	}
+
+	if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
+		return fmt.Errorf("decoding response: %w", err)
+	}
+
+	return nil
+}
+
 // Market represents a Polymarket prediction market.
 type Market struct {
 	ID              string  `json:"id"`
@@ -191,31 +218,10 @@ func (c *Client) GetMarkets(ctx context.Context, params GetMarketsParams) ([]Mar
 
 // GetMarket fetches a single market by condition ID.
 func (c *Client) GetMarket(ctx context.Context, conditionID string) (*Market, error) {
-	u := fmt.Sprintf("%s/markets/%s", c.gammaURL, conditionID)
-
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
-	if err != nil {
-		return nil, fmt.Errorf("creating request: %w", err)
-	}
-
-	req.Header.Set("Accept", "application/json")
-
-	resp, err := c.httpClient.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("executing request: %w", err)
-	}
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(resp.Body)
-		return nil, fmt.Errorf("API error: status %d, body: %s", resp.StatusCode, string(body))
-	}
-
 	var market Market
-	if err := json.NewDecoder(resp.Body).Decode(&market); err != nil {
-		return nil, fmt.Errorf("decoding response: %w", err)
+	if err := c.doGet(ctx, fmt.Sprintf("%s/markets/%s", c.gammaURL, conditionID), &market); err != nil {
+		return nil, err
 	}
-
 	return &market, nil
 }
 
@@ -236,31 +242,10 @@ type OrderBookLevel struct {
 
 // GetOrderBook fetches the order book for a token.
 func (c *Client) GetOrderBook(ctx context.Context, tokenID string) (*OrderBook, error) {
-	u := fmt.Sprintf("%s/book?token_id=%s", c.clobURL, tokenID)
-
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
-	if err != nil {
-		return nil, fmt.Errorf("creating request: %w", err)
-	}
-
-	req.Header.Set("Accept", "application/json")
-
-	resp, err := c.httpClient.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("executing request: %w", err)
-	}
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(resp.Body)
-		return nil, fmt.Errorf("API error: status %d, body: %s", resp.StatusCode, string(body))
-	}
-
 	var book OrderBook
-	if err := json.NewDecoder(resp.Body).Decode(&book); err != nil {
-		return nil, fmt.Errorf("decoding response: %w", err)
+	if err := c.doGet(ctx, fmt.Sprintf("%s/book?token_id=%s", c.clobURL, tokenID), &book); err != nil {
+		return nil, err
 	}
-
 	return &book, nil
 }
 
@@ -272,31 +257,10 @@ type Price struct {
 
 // GetPrice fetches the current price for a token.
 func (c *Client) GetPrice(ctx context.Context, tokenID string) (*Price, error) {
-	u := fmt.Sprintf("%s/price?token_id=%s", c.clobURL, tokenID)
-
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
-	if err != nil {
-		return nil, fmt.Errorf("creating request: %w", err)
-	}
-
-	req.Header.Set("Accept", "application/json")
-
-	resp, err := c.httpClient.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("executing request: %w", err)
-	}
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(resp.Body)
-		return nil, fmt.Errorf("API error: status %d, body: %s", resp.StatusCode, string(body))
-	}
-
 	var price Price
-	if err := json.NewDecoder(resp.Body).Decode(&price); err != nil {
-		return nil, fmt.Errorf("decoding response: %w", err)
+	if err := c.doGet(ctx, fmt.Sprintf("%s/price?token_id=%s", c.clobURL, tokenID), &price); err != nil {
+		return nil, err
 	}
-
 	return &price, nil
 }
 
@@ -307,31 +271,10 @@ type MidPrice struct {
 
 // GetMidPrice fetches the mid price for a token.
 func (c *Client) GetMidPrice(ctx context.Context, tokenID string) (*MidPrice, error) {
-	u := fmt.Sprintf("%s/midpoint?token_id=%s", c.clobURL, tokenID)
-
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
-	if err != nil {
-		return nil, fmt.Errorf("creating request: %w", err)
-	}
-
-	req.Header.Set("Accept", "application/json")
-
-	resp, err := c.httpClient.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("executing request: %w", err)
-	}
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(resp.Body)
-		return nil, fmt.Errorf("API error: status %d, body: %s", resp.StatusCode, string(body))
-	}
-
 	var mid MidPrice
-	if err := json.NewDecoder(resp.Body).Decode(&mid); err != nil {
-		return nil, fmt.Errorf("decoding response: %w", err)
+	if err := c.doGet(ctx, fmt.Sprintf("%s/midpoint?token_id=%s", c.clobURL, tokenID), &mid); err != nil {
+		return nil, err
 	}
-
 	return &mid, nil
 }
 
@@ -342,30 +285,9 @@ type Spread struct {
 
 // GetSpread fetches the spread for a token.
 func (c *Client) GetSpread(ctx context.Context, tokenID string) (*Spread, error) {
-	u := fmt.Sprintf("%s/spread?token_id=%s", c.clobURL, tokenID)
-
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, u, nil)
-	if err != nil {
-		return nil, fmt.Errorf("creating request: %w", err)
-	}
-
-	req.Header.Set("Accept", "application/json")
-
-	resp, err := c.httpClient.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("executing request: %w", err)
-	}
-	defer func() { _ = resp.Body.Close() }()
-
-	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(resp.Body)
-		return nil, fmt.Errorf("API error: status %d, body: %s", resp.StatusCode, string(body))
-	}
-
 	var spread Spread
-	if err := json.NewDecoder(resp.Body).Decode(&spread); err != nil {
-		return nil, fmt.Errorf("decoding response: %w", err)
+	if err := c.doGet(ctx, fmt.Sprintf("%s/spread?token_id=%s", c.clobURL, tokenID), &spread); err != nil {
+		return nil, err
 	}
-
 	return &spread, nil
 }
