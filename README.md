@@ -1,7 +1,29 @@
 # polymarket-go
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/grokify/polymarket-go.svg)](https://pkg.go.dev/github.com/grokify/polymarket-go)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Go CI][go-ci-svg]][go-ci-url]
+[![Go Lint][go-lint-svg]][go-lint-url]
+[![Go SAST][go-sast-svg]][go-sast-url]
+[![Go Report Card][goreport-svg]][goreport-url]
+[![Docs][docs-godoc-svg]][docs-godoc-url]
+[![Visualization][viz-svg]][viz-url]
+[![License][license-svg]][license-url]
+
+ [go-ci-svg]: https://github.com/grokify/polymarket-go/actions/workflows/go-ci.yaml/badge.svg?branch=main
+ [go-ci-url]: https://github.com/grokify/polymarket-go/actions/workflows/go-ci.yaml
+ [go-lint-svg]: https://github.com/grokify/polymarket-go/actions/workflows/go-lint.yaml/badge.svg?branch=main
+ [go-lint-url]: https://github.com/grokify/polymarket-go/actions/workflows/go-lint.yaml
+ [go-sast-svg]: https://github.com/grokify/polymarket-go/actions/workflows/go-sast-codeql.yaml/badge.svg?branch=main
+ [go-sast-url]: https://github.com/grokify/polymarket-go/actions/workflows/go-sast-codeql.yaml
+ [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/polymarket-go
+ [goreport-url]: https://goreportcard.com/report/github.com/grokify/polymarket-go
+ [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/grokify/polymarket-go
+ [docs-godoc-url]: https://pkg.go.dev/github.com/grokify/polymarket-go
+ [viz-svg]: https://img.shields.io/badge/visualizaton-Go-blue.svg
+ [viz-url]: https://mango-dune-07a8b7110.1.azurestaticapps.net/?repo=grokify%2Fpolymarket-go
+ [loc-svg]: https://tokei.rs/b1/github/grokify/polymarket-go
+ [repo-url]: https://github.com/grokify/polymarket-go
+ [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
+ [license-url]: https://github.com/grokify/polymarket-go/blob/master/LICENSE
 
 Go SDK for building AI trading agents on [Polymarket](https://polymarket.com) prediction markets.
 
@@ -56,24 +78,24 @@ book, err := client.GetOrderBook(ctx, tokenID)
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  polymarket-go                                               │
+│  polymarket-go                                              │
 ├─────────────────────────────────────────────────────────────┤
-│  cmd/polymarket-agent/     CLI for running agent workflows   │
+│  cmd/polymarket-agent/     CLI for running agent workflows  │
 ├─────────────────────────────────────────────────────────────┤
-│  agents/specs/             Multi-agent-spec definitions      │
-│  ├── agents/               Agent markdown files              │
-│  ├── team.json             Workflow configuration            │
-│  └── deployment-*.json     Platform-specific configs         │
+│  agents/specs/             Multi-agent-spec definitions     │
+│  ├── agents/               Agent markdown files             │
+│  ├── team.json             Workflow configuration           │
+│  └── deployment-*.json     Platform-specific configs        │
 ├─────────────────────────────────────────────────────────────┤
-│  internal/                                                   │
-│  ├── polymarket/           Polymarket API client             │
-│  ├── loader/               Spec file parsers                 │
-│  ├── executor/             Workflow execution engine         │
-│  └── tools/                Agent tools for Polymarket        │
+│  internal/                                                  │
+│  ├── polymarket/           Polymarket API client            │
+│  ├── loader/               Spec file parsers                │
+│  ├── executor/             Workflow execution engine        │
+│  └── tools/                Agent tools for Polymarket       │
 ├─────────────────────────────────────────────────────────────┤
-│  omnillm-langchaingo       LangChainGo adapter               │
+│  omnillm-langchaingo       LangChainGo adapter              │
 ├─────────────────────────────────────────────────────────────┤
-│  omnillm-core              Unified LLM provider abstraction  │
+│  omnillm-core              Unified LLM provider abstraction │
 └─────────────────────────────────────────────────────────────┘
 ```
 
