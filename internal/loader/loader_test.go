@@ -8,13 +8,13 @@ func TestParseAgentMarkdown(t *testing.T) {
 	l := NewLoader()
 
 	tests := []struct {
-		name       string
-		content    string
-		wantName   string
-		wantModel  string
-		wantTools  []string
-		wantInstr  string
-		wantErr    bool
+		name      string
+		content   string
+		wantName  string
+		wantModel string
+		wantTools []string
+		wantInstr string
+		wantErr   bool
 	}{
 		{
 			name: "valid agent",

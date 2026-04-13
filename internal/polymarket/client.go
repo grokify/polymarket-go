@@ -90,9 +90,9 @@ type Market struct {
 	Volume1wk       float64 `json:"volume1wk"`
 	Volume1mo       float64 `json:"volume1mo"`
 	Volume1yr       float64 `json:"volume1yr"`
-	Outcomes        string  `json:"outcomes"`        // JSON array string
-	OutcomePrices   string  `json:"outcomePrices"`   // JSON array string
-	ClobTokenIDs    string  `json:"clobTokenIds"`    // JSON array string
+	Outcomes        string  `json:"outcomes"`      // JSON array string
+	OutcomePrices   string  `json:"outcomePrices"` // JSON array string
+	ClobTokenIDs    string  `json:"clobTokenIds"`  // JSON array string
 	Image           string  `json:"image"`
 	Icon            string  `json:"icon"`
 	EnableOrderBook bool    `json:"enableOrderBook"`
@@ -105,20 +105,20 @@ type Market struct {
 
 // GetMarketsParams are parameters for fetching markets.
 type GetMarketsParams struct {
-	Active     *bool
-	Closed     *bool
-	Limit      int
-	Cursor     string
-	TagSlug    string
-	Order      string
-	Ascending  bool
-	LiqMin     float64
-	LiqMax     float64
-	VolumeMin  float64
-	VolumeMax  float64
-	StartDate  string
-	EndDate    string
-	TextQuery  string
+	Active    *bool
+	Closed    *bool
+	Limit     int
+	Cursor    string
+	TagSlug   string
+	Order     string
+	Ascending bool
+	LiqMin    float64
+	LiqMax    float64
+	VolumeMin float64
+	VolumeMax float64
+	StartDate string
+	EndDate   string
+	TextQuery string
 }
 
 // GetMarkets fetches markets from the Gamma API.

@@ -90,17 +90,17 @@ func (t *MarketTool) Call(ctx context.Context, input string) (string, error) {
 	markets := make([]map[string]any, 0, len(marketsData))
 	for _, m := range marketsData {
 		markets = append(markets, map[string]any{
-			"id":           m.ID,
-			"question":     m.Question,
-			"description":  m.Description,
-			"liquidity":    m.LiquidityNum,
-			"volume_24h":   m.Volume24hr,
-			"end_date":     m.EndDateISO,
-			"slug":         m.Slug,
-			"best_bid":     m.BestBid,
-			"best_ask":     m.BestAsk,
-			"spread":       m.Spread,
-			"last_price":   m.LastTradePrice,
+			"id":          m.ID,
+			"question":    m.Question,
+			"description": m.Description,
+			"liquidity":   m.LiquidityNum,
+			"volume_24h":  m.Volume24hr,
+			"end_date":    m.EndDateISO,
+			"slug":        m.Slug,
+			"best_bid":    m.BestBid,
+			"best_ask":    m.BestAsk,
+			"spread":      m.Spread,
+			"last_price":  m.LastTradePrice,
 		})
 	}
 

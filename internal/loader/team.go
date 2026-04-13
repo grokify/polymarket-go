@@ -67,8 +67,8 @@ type Deployment struct {
 // DeploymentConfig holds platform-specific configuration.
 type DeploymentConfig struct {
 	// Claude Code specific
-	AgentDir string            `json:"agent_dir,omitempty"`
-	SpecDir  string            `json:"spec_dir,omitempty"`
+	AgentDir     string            `json:"agent_dir,omitempty"`
+	SpecDir      string            `json:"spec_dir,omitempty"`
 	ModelMapping map[string]string `json:"model_mapping,omitempty"`
 	ToolMapping  map[string]string `json:"tool_mapping,omitempty"`
 
@@ -90,7 +90,7 @@ type ServerConfig struct {
 
 // ConcurrencyConfig holds concurrency configuration.
 type ConcurrencyConfig struct {
-	Model              string `json:"model"`
+	Model               string `json:"model"`
 	MaxConcurrentAgents int    `json:"max_concurrent_agents"`
 	StepTimeoutSeconds  int    `json:"step_timeout_seconds,omitempty"`
 }
@@ -104,8 +104,8 @@ type LLMConfig struct {
 
 // RetrievalConfig holds RAG retrieval configuration.
 type RetrievalConfig struct {
-	Provider         string `json:"provider"`
-	Config           json.RawMessage `json:"config,omitempty"`
+	Provider string          `json:"provider"`
+	Config   json.RawMessage `json:"config,omitempty"`
 }
 
 // PolymarketConfig holds Polymarket API configuration.
