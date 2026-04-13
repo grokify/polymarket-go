@@ -1,0 +1,86 @@
+{
+  "name": "polymarket-trading-team",
+  "version": "0.1.0",
+  "description": "Autonomous trading team for Polymarket prediction markets",
+  "agents": ["market-analyst", "superforecaster", "trader"],
+  "workflow": {
+    "type": "graph",
+    "steps": [
+      {
+        "name": "discover",
+        "agent": "market-analyst",
+        "inputs": [
+          {
+            "name": "market_filters",
+            "type": "object",
+            "description": "Filters for market discovery",
+            "default": {
+              "min_liquidity": 10000,
+              "max_days_to_resolution": 30,
+              "active": true
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "market_candidates",
+            "type": "array",
+            "description": "List of markets with potential edge"
+          }
+        ]
+      },
+      {
+        "name": "forecast",
+        "agent": "superforecaster",
+        "depends_on": ["discover"],
+        "inputs": [
+          {
+            "name": "markets",
+            "type": "array",
+            "from": "discover.market_candidates",
+            "description": "Markets to generate forecasts for"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "forecasts",
+            "type": "array",
+            "description": "Calibrated probability estimates"
+          }
+        ]
+      },
+      {
+        "name": "execute",
+        "agent": "trader",
+        "depends_on": ["forecast"],
+        "inputs": [
+          {
+            "name": "forecasts",
+            "type": "array",
+            "from": "forecast.forecasts",
+            "description": "Forecasts with edge calculations"
+          },
+          {
+            "name": "bankroll",
+            "type": "number",
+            "description": "Available trading capital"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "trades",
+            "type": "array",
+            "description": "Executed trades"
+          },
+          {
+            "name": "positions",
+            "type": "array",
+            "description": "Current positions after execution"
+          }
+        ]
+      }
+    ]
+  },
+  "context": "This team analyzes Polymarket prediction markets to identify mispriced outcomes and execute profitable trades. The workflow follows a research → forecast → execute pipeline with risk management at each step.",
+  "plan_approval": true
+}

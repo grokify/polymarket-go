@@ -1,0 +1,31 @@
+{
+  "platform": "claude-code",
+  "team": "polymarket-trading-team",
+  "version": "0.1.0",
+  "config": {
+    "agent_dir": ".claude/agents",
+    "spec_dir": "agents/specs/agents",
+    "model_mapping": {
+      "haiku": "claude-haiku-4",
+      "sonnet": "claude-sonnet-4",
+      "opus": "claude-opus-4"
+    },
+    "tool_mapping": {
+      "WebSearch": "WebSearch",
+      "WebFetch": "WebFetch",
+      "Read": "Read",
+      "Write": "Write",
+      "Bash": "Bash",
+      "Glob": "Glob",
+      "Grep": "Grep"
+    },
+    "execution": {
+      "method": "task_tool",
+      "subagent_type_mapping": {
+        "market-analyst": "Explore",
+        "superforecaster": "general-purpose",
+        "trader": "general-purpose"
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "platform": "go-server",
+  "team": "polymarket-trading-team",
+  "version": "0.1.0",
+  "config": {
+    "server": {
+      "port": 8080,
+      "metrics_port": 9090,
+      "health_endpoint": "/health"
+    },
+    "concurrency": {
+      "model": "goroutines",
+      "max_concurrent_agents": 5,
+      "step_timeout_seconds": 300
+    },
+    "llm": {
+      "provider": "omnillm",
+      "config": {
+        "providers": [
+          {"name": "anthropic", "api_key_env": "ANTHROPIC_API_KEY"},
+          {"name": "openai", "api_key_env": "OPENAI_API_KEY"}
+        ]
+      },
+      "model_mapping": {
+        "haiku": "claude-haiku-4",
+        "sonnet": "claude-sonnet-4-20250514",
+        "opus": "claude-opus-4-20250514"
+      }
+    },
+    "retrieval": {
+      "provider": "omniretrieve",
+      "config": {
+        "vector_backend": "pgvector",
+        "connection_string_env": "PGVECTOR_URL",
+        "hybrid_policy": "parallel",
+        "vector_weight": 0.6,
+        "graph_weight": 0.4
+      }
+    },
+    "polymarket": {
+      "clob_url": "https://clob.polymarket.com",
+      "gamma_url": "https://gamma-api.polymarket.com",
+      "chain_id": 137,
+      "private_key_env": "POLYGON_WALLET_PRIVATE_KEY"
+    },
+    "risk": {
+      "max_position_percent": 10,
+      "max_exposure_percent": 50,
+      "min_edge_percent": 5,
+      "kelly_multiplier": 0.25
+    }
+  }
+}
