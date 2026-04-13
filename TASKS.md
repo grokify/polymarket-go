@@ -121,12 +121,12 @@ Production readiness and tooling.
 
 - [ ] **CLI Enhancements** - Feature-rich command interface
   - [x] `--demo` - Demo mode with live market data
+  - [x] `--analyze` - Superforecaster market analysis
   - [ ] `get-all-markets` - List markets with filters
   - [ ] `get-all-events` - List events with filters
   - [ ] `get-relevant-news` - Search news by keywords
   - [ ] `create-local-markets-rag` - Build local RAG index
   - [ ] `query-local-markets-rag` - Query RAG index
-  - [ ] `ask-superforecaster` - Interactive forecasting
   - [ ] `ask-llm` - General LLM queries
   - [ ] `run-autonomous-trader` - Start trading loop
 
