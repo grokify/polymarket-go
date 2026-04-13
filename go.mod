@@ -7,6 +7,7 @@ require (
 	github.com/plexusone/omnillm-core v0.15.0
 	github.com/plexusone/omnillm-langchaingo v0.1.0
 	github.com/shopspring/decimal v1.4.0
+	github.com/spf13/cobra v1.10.2
 	github.com/tmc/langchaingo v0.1.14
 	gopkg.in/yaml.v3 v3.0.1
 )
@@ -33,8 +34,10 @@ require (
 	github.com/grokify/mogo v0.74.1 // indirect
 	github.com/grokify/sogo v0.14.0 // indirect
 	github.com/holiman/uint256 v1.3.2 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/pkoukk/tiktoken-go v0.1.8 // indirect
 	github.com/shirou/gopsutil v3.21.4-0.20210419000835-c7a38de76ee5+incompatible // indirect
+	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/supranational/blst v0.3.16 // indirect
 	github.com/tklauser/go-sysconf v0.3.15 // indirect
 	github.com/tklauser/numcpus v0.10.0 // indirect
