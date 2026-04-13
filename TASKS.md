@@ -79,27 +79,27 @@ External data sources for market research and analysis.
 
 Enhanced agent capabilities and workflows.
 
-- [ ] **Superforecaster Prompts** - Calibrated probability estimation
-  - [ ] Port superforecaster prompt template
-  - [ ] Base rate analysis prompts
-  - [ ] Evidence weighting prompts
+- [x] **Superforecaster Prompts** - Calibrated probability estimation
+  - [x] Port superforecaster prompt template
+  - [x] Base rate analysis prompts (included in superforecaster)
+  - [x] Evidence weighting prompts (included in superforecaster)
   - [ ] Calibration check prompts
 
-- [ ] **Market Analyst Prompts** - Trading opportunity discovery
-  - [ ] Market filtering prompt
-  - [ ] Edge calculation prompt
-  - [ ] Risk assessment prompt
+- [x] **Market Analyst Prompts** - Trading opportunity discovery
+  - [x] Market filtering prompt (`FilterMarkets()`)
+  - [x] Edge calculation prompt (`EdgeCalculation()`)
+  - [x] Risk assessment prompt (`RiskAssessment()`)
 
 - [ ] **Trade Recommendation Pipeline** - Full workflow
-  - [ ] `FilterEventsWithRAG()` - Semantic event filtering
+  - [ ] `FilterEventsWithRAG()` - Semantic event filtering (needs RAG)
   - [ ] `MapEventsToMarkets()` - Event to market mapping
-  - [ ] `FilterMarketsWithRAG()` - Semantic market filtering
-  - [ ] `SourceBestTrade()` - Analyze and recommend trade
-  - [ ] `FormatTradeForExecution()` - Extract trade parameters
+  - [ ] `FilterMarketsWithRAG()` - Semantic market filtering (needs RAG)
+  - [x] `SourceBestTrade()` - Analyze and recommend trade
+  - [x] `FormatTradeForExecution()` - Extract trade parameters (`ParseTradeResponse()`)
 
-- [ ] **Token Management** - LLM context optimization
-  - [ ] `EstimateTokens()` - Token count estimation
-  - [ ] `DivideList()` - Chunk data for long contexts
+- [x] **Token Management** - LLM context optimization (partial)
+  - [x] `EstimateTokens()` - Token count estimation
+  - [x] `DivideList()` - Chunk data for long contexts
   - [ ] `ProcessDataChunk()` - Process chunks sequentially
   - [ ] Multi-chunk LLM calls with aggregation
 
