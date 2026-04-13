@@ -29,10 +29,10 @@ Go SDK for building AI trading agents on [Polymarket](https://polymarket.com) pr
 
 ## Features
 
-- **Polymarket API Client** - Full client for Gamma (markets) and CLOB (trading) APIs
-- **Multi-Agent Workflows** - Define agent teams using [multi-agent-spec](https://github.com/plexusone/multi-agent-spec) format
-- **LLM Integration** - Works with any LLM via [omnillm](https://github.com/plexusone/omnillm) + [LangChainGo](https://github.com/tmc/langchaingo)
-- **Portable Specs** - Same agent definitions deploy to Claude Code, Go servers, or Kubernetes
+- 📊 **Polymarket API Client** - Full client for Gamma (markets) and CLOB (trading) APIs
+- 🤖 **Multi-Agent Workflows** - Define agent teams using [multi-agent-spec](https://github.com/plexusone/multi-agent-spec) format
+- 🧠 **LLM Integration** - Works with any LLM via [omnillm](https://github.com/plexusone/omnillm) + [LangChainGo](https://github.com/tmc/langchaingo)
+- 🚀 **Portable Specs** - Same agent definitions deploy to Claude Code, Go servers, or Kubernetes
 
 ## Installation
 
