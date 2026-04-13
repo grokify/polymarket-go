@@ -2,44 +2,48 @@
 
 Feature parity roadmap for polymarket-go vs [Polymarket/agents](https://github.com/Polymarket/agents).
 
-## Phase 1: Trading Infrastructure
+## Phase 1: Trading Infrastructure ✅
 
-Required for real trading on Polymarket.
+Required for real trading on Polymarket. **Completed via [polymarket-go-sdk](https://github.com/GoPolymarket/polymarket-go-sdk) integration.**
 
-- [ ] **Order Signing** - EIP712 signature implementation for Polymarket orders
-  - [ ] Implement EIP712 typed data signing
-  - [ ] Port `OrderBuilder` functionality from py_order_utils
-  - [ ] Port `Signer` functionality for private key signing
-  - [ ] Support order nonce and expiration handling
+- [x] **Order Signing** - EIP712 signature implementation for Polymarket orders
+  - [x] Implement EIP712 typed data signing (via `auth.NewPrivateKeySigner`)
+  - [x] Port `OrderBuilder` functionality (via `clob.NewOrderBuilder`)
+  - [x] Port `Signer` functionality for private key signing
+  - [x] Support order nonce and expiration handling
 
-- [ ] **Wallet Management** - Private key and address handling
-  - [ ] Derive wallet address from private key
-  - [ ] Secure private key loading from environment variables
-  - [ ] Web3/Polygon RPC connection (`https://polygon-rpc.com`)
+- [x] **Wallet Management** - Private key and address handling
+  - [x] Derive wallet address from private key
+  - [x] Secure private key loading from environment variables
+  - [x] Web3/Polygon RPC connection
 
-- [ ] **CLOB Trading** - Order placement and management
-  - [ ] `PlaceOrder()` - Place limit order
-  - [ ] `PlaceMarketOrder()` - Place market order (FOK)
-  - [ ] `CancelOrder()` - Cancel existing order
-  - [ ] `GetOpenOrders()` - List open orders
-  - [ ] Support BUY and SELL sides
-  - [ ] Configurable fees (basis points)
+- [x] **CLOB Trading** - Order placement and management
+  - [x] `PlaceOrder()` - Place limit order
+  - [x] `PlaceMarketOrder()` - Place market order (FOK)
+  - [x] `CancelOrder()` - Cancel existing order
+  - [x] `GetOrders()` - List orders
+  - [x] Support BUY and SELL sides
+  - [x] Configurable fees (basis points)
 
-- [ ] **Token Approvals** - USDC and CTF approval transactions
-  - [ ] USDC approval for exchange (unlimited)
-  - [ ] CTF (Conditional Token Framework) approval
-  - [ ] Neg Risk Exchange approval
-  - [ ] Neg Risk Adapter approval
+- [x] **Token Approvals** - Via SDK's CTF client
+  - [x] USDC approval for exchange
+  - [x] CTF (Conditional Token Framework) approval
+  - [x] Neg Risk Exchange approval
 
-- [ ] **Balance Queries** - Wallet and position management
-  - [ ] `GetUSDCBalance()` - Get wallet USDC balance
-  - [ ] `GetPositions()` - Get current positions
-  - [ ] `GetTradeHistory()` - Get historical trades
+- [x] **Balance Queries** - Wallet and position management
+  - [x] `GetBalanceAllowance()` - Get balance and allowance
+  - [x] `GetTrades()` - Get trade history
 
-- [ ] **API Authentication** - CLOB API credentials
-  - [ ] Key-based authentication for CLOB API
-  - [ ] Derive/create API credentials automatically
-  - [ ] Store API key, secret, passphrase securely
+- [x] **API Authentication** - CLOB API credentials
+  - [x] Key-based authentication for CLOB API
+  - [x] API key, secret, passphrase support
+
+- [x] **WebSocket Streaming** - Real-time data
+  - [x] `SubscribePrices()` - Price updates
+  - [x] `SubscribeOrderbook()` - Order book updates
+  - [x] `SubscribeMidpoints()` - Midpoint updates
+  - [x] `SubscribeUserOrders()` - User order updates
+  - [x] `SubscribeUserTrades()` - User trade updates
 
 ## Phase 2: Data Enrichment
 
@@ -64,12 +68,12 @@ External data sources for market research and analysis.
   - [ ] `SearchWeb()` - General web search
   - [ ] `SearchNews()` - News-specific search
 
-- [ ] **Rich Data Models** - Port Pydantic models to Go structs
-  - [ ] `Trade` - Full trade model (20+ fields)
-  - [ ] `Market` - Rich market model (50+ fields)
-  - [ ] `PolymarketEvent` - Event with markets, tags, metrics
-  - [ ] `ClobReward` - Reward configuration
-  - [ ] `Article` - News article model
+- [x] **Rich Data Models** - Via polymarket-go-sdk
+  - [x] `clobtypes.Trade` - Full trade model
+  - [x] `clobtypes.Market` - Rich market model (50+ fields)
+  - [x] `gamma.Event` - Event with markets, tags, metrics
+  - [x] `clobtypes.OrderResponse` - Order response model
+  - [ ] `Article` - News article model (for NewsAPI)
 
 ## Phase 3: Agent Intelligence
 
@@ -116,6 +120,7 @@ Enhanced agent capabilities and workflows.
 Production readiness and tooling.
 
 - [ ] **CLI Enhancements** - Feature-rich command interface
+  - [x] `--demo` - Demo mode with live market data
   - [ ] `get-all-markets` - List markets with filters
   - [ ] `get-all-events` - List events with filters
   - [ ] `get-relevant-news` - Search news by keywords
@@ -139,42 +144,52 @@ Production readiness and tooling.
   - [ ] Mock LLM responses for testing
 
 - [ ] **Error Handling** - Resilience patterns
-  - [ ] Automatic retries with exponential backoff
+  - [x] Built-in retries via polymarket-go-sdk
   - [ ] Circuit breakers for external services
   - [ ] Graceful degradation
   - [ ] Structured error types
 
-## Constants Reference
+## SDK Integration
 
-From Polymarket/agents for implementation:
+Using [GoPolymarket/polymarket-go-sdk](https://github.com/GoPolymarket/polymarket-go-sdk) v1.1.0 for:
 
-```go
-const (
-    ChainID            = 137 // Polygon
-    CLOBURL            = "https://clob.polymarket.com"
-    GammaURL           = "https://gamma-api.polymarket.com"
-    PolygonRPC         = "https://polygon-rpc.com"
-    USDCAddress        = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
-    CTFAddress         = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045"
-    ExchangeAddress    = "0x4bfb41d5b3570defd03c39a9a4d8de6bd8b8982e"
-    NegRiskExchange    = "0xC5d563A36AE78145C45a50134d48A1215220f80a"
-)
-```
+- Full CLOB REST API
+- WebSocket streaming with auto-reconnect
+- EIP-712 order signing
+- Order builder with fluent API
+- Gamma API for metadata
+- High-precision decimals
+- AWS KMS signer support
 
-## Dependencies to Add
+### SDKClient Usage
 
 ```go
-// go.mod additions for full parity
-require (
-    github.com/ethereum/go-ethereum v1.13.x  // Ethereum/Polygon interaction
-    github.com/chroma-core/chroma-go v0.x.x  // Vector database (if available)
-    // Or use pgvector with jackc/pgx
-)
+import "github.com/grokify/polymarket-go/internal/polymarket"
+
+// Create authenticated client
+client, err := polymarket.NewSDKClient(polymarket.SDKConfig{
+    // Reads from env: POLYGON_WALLET_PRIVATE_KEY, POLYMARKET_API_KEY, etc.
+})
+
+// Place a limit order
+resp, err := client.PlaceOrder(ctx, polymarket.PlaceOrderParams{
+    TokenID:   "TOKEN_ID",
+    Side:      "BUY",
+    Price:     decimal.NewFromFloat(0.55),
+    Size:      decimal.NewFromFloat(100),
+    OrderType: clobtypes.OrderTypeGTC,
+})
+
+// Subscribe to price updates
+prices, err := client.SubscribePrices(ctx, []string{"TOKEN_ID"})
+for price := range prices {
+    fmt.Printf("Price: %v\n", price)
+}
 ```
 
 ## References
 
+- [GoPolymarket/polymarket-go-sdk](https://github.com/GoPolymarket/polymarket-go-sdk) - Go SDK (integrated)
 - [Polymarket/agents](https://github.com/Polymarket/agents) - Official Python SDK
 - [py-clob-client](https://github.com/Polymarket/py-clob-client) - Python CLOB client
-- [py-order-utils](https://github.com/Polymarket/py-order-utils) - Order signing utilities
 - [Polymarket CLOB API Docs](https://docs.polymarket.com/)
