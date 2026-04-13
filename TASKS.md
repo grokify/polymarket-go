@@ -103,9 +103,9 @@ Enhanced agent capabilities and workflows.
   - [ ] `ProcessDataChunk()` - Process chunks sequentially
   - [ ] Multi-chunk LLM calls with aggregation
 
-- [ ] **Autonomous Trading Loop** - Scheduled execution
-  - [ ] Cron-based scheduling (weekly, daily, etc.)
-  - [ ] `OneBestTrade()` - Single best trade workflow
+- [x] **Autonomous Trading Loop** - Scheduled execution (partial)
+  - [x] Interval-based scheduling (`trade auto --interval`)
+  - [x] `OneBestTrade()` - Single best trade workflow (`trade recommend`)
   - [ ] Recursive retry with backoff
   - [ ] Circuit breaker for failures
   - [ ] Position maintenance logic
@@ -119,16 +119,17 @@ Enhanced agent capabilities and workflows.
 
 Production readiness and tooling.
 
-- [ ] **CLI Enhancements** - Feature-rich command interface
-  - [x] `--demo` - Demo mode with live market data
-  - [x] `--analyze` - Superforecaster market analysis
-  - [ ] `get-all-markets` - List markets with filters
-  - [ ] `get-all-events` - List events with filters
-  - [ ] `get-relevant-news` - Search news by keywords
-  - [ ] `create-local-markets-rag` - Build local RAG index
-  - [ ] `query-local-markets-rag` - Query RAG index
+- [x] **CLI Enhancements** - Feature-rich command interface (Cobra)
+  - [x] `demo` - Demo mode with live market data
+  - [x] `markets list` - List markets with filters (--json, --min-liquidity)
+  - [x] `markets analyze` - Superforecaster market analysis
+  - [x] `events list` - List events with filters (--json)
+  - [x] `trade auto` - Run autonomous trading loop (--interval, --execute)
+  - [x] `trade recommend` - Get single trade recommendation
+  - [ ] `get-relevant-news` - Search news by keywords (needs NewsAPI)
+  - [ ] `create-local-markets-rag` - Build local RAG index (needs RAG)
+  - [ ] `query-local-markets-rag` - Query RAG index (needs RAG)
   - [ ] `ask-llm` - General LLM queries
-  - [ ] `run-autonomous-trader` - Start trading loop
 
 - [ ] **REST Server** - HTTP API
   - [ ] FastAPI-equivalent using Chi or Gin
