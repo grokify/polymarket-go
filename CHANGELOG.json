@@ -1,0 +1,48 @@
+{
+  "irVersion": "1.0",
+  "project": "polymarket-go",
+  "repository": "https://github.com/grokify/polymarket-go",
+  "versioning": "semver",
+  "commitConvention": "conventional",
+  "maintainers": ["grokify", "johncwang@gmail.com"],
+  "releases": [
+    {
+      "version": "v0.1.0",
+      "date": "2026-04-13",
+      "highlights": [
+        { "description": "Go SDK for building AI trading agents on Polymarket prediction markets" },
+        { "description": "Multi-agent workflow system with portable specs deployable to Claude Code or Go servers" }
+      ],
+      "added": [
+        { "description": "Polymarket API client for Gamma (markets) and CLOB (trading) APIs", "commit": "292c38b" },
+        { "description": "`GetMarkets()` to fetch active prediction markets with filtering", "commit": "292c38b" },
+        { "description": "`GetOrderBook()` to fetch order book data for tokens", "commit": "292c38b" },
+        { "description": "`GetPrice()`, `GetMidPrice()`, `GetSpread()` for price data", "commit": "292c38b" },
+        { "description": "Multi-agent-spec loader for YAML frontmatter markdown agents", "commit": "292c38b" },
+        { "description": "Team and deployment JSON configuration parsers", "commit": "292c38b" },
+        { "description": "Workflow executor with DAG-based topological sort", "commit": "292c38b" },
+        { "description": "LangChainGo integration via omnillm-langchaingo adapter", "commit": "292c38b" },
+        { "description": "Agent tools: MarketTool, OrderBookTool, PlaceOrderTool", "commit": "292c38b" },
+        { "description": "Three agent specs: market-analyst, superforecaster, trader", "commit": "a2654cc" },
+        { "description": "Graph workflow: discover → forecast → execute", "commit": "a2654cc" },
+        { "description": "Deployment configs for Go server and Claude Code", "commit": "a2654cc" },
+        { "description": "`polymarket-agent` CLI with --demo flag for live market data", "commit": "f310251" }
+      ],
+      "documentation": [
+        { "description": "Technical Requirements Document (TRD.md)", "commit": "1b0d22e" },
+        { "description": "Component Integration Guide (COMPONENTS.md)", "commit": "1b0d22e" },
+        { "description": "README with architecture diagram and quick start guide" }
+      ],
+      "tests": [
+        { "description": "Integration tests for Polymarket API client", "commit": "292c38b" },
+        { "description": "Unit tests for agent/team/deployment loaders", "commit": "292c38b" },
+        { "description": "Unit tests for workflow topological sort and execution", "commit": "292c38b" }
+      ],
+      "dependencies": [
+        { "description": "omnillm-core v0.15.0 for LLM provider abstraction", "commit": "6d698f8" },
+        { "description": "omnillm-langchaingo v0.1.0 for LangChainGo integration", "commit": "6d698f8" },
+        { "description": "langchaingo v0.1.14 for chains and agents", "commit": "6d698f8" }
+      ]
+    }
+  ]
+}
