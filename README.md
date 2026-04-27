@@ -33,6 +33,7 @@ Go SDK for building AI trading agents on [Polymarket](https://polymarket.com) pr
 - 🤖 **Multi-Agent Workflows** - Define agent teams using [multi-agent-spec](https://github.com/plexusone/multi-agent-spec) format
 - 🧠 **LLM Integration** - Works with any LLM via [omnillm](https://github.com/plexusone/omnillm) + [LangChainGo](https://github.com/tmc/langchaingo)
 - 🚀 **Portable Specs** - Same agent definitions deploy to Claude Code, Go servers, or Kubernetes
+- 🔌 **OmniAgent Integration** - Compiled skill wrapper for embedding in [omniagent](https://github.com/plexusone/omniagent)-based agents
 
 ## Installation
 
@@ -81,6 +82,8 @@ book, err := client.GetOrderBook(ctx, tokenID)
 │  polymarket-go                                              │
 ├─────────────────────────────────────────────────────────────┤
 │  cmd/polymarket-agent/     CLI for running agent workflows  │
+├─────────────────────────────────────────────────────────────┤
+│  omniagent/skill/          Compiled skill for omniagent     │
 ├─────────────────────────────────────────────────────────────┤
 │  agents/specs/             Multi-agent-spec definitions     │
 │  ├── agents/               Agent markdown files             │
@@ -136,11 +139,34 @@ The same agent specs can deploy to multiple platforms:
 | Go Server | `deployment-go-server.json` | Production trading |
 | Claude Code | `deployment-claude-code.json` | Development/testing |
 
+## OmniAgent Integration
+
+Use polymarket-go as a compiled skill in omniagent-based agents:
+
+```go
+import (
+    "github.com/plexusone/omniagent/agent"
+    predictskill "github.com/grokify/polymarket-go/omniagent/skill"
+)
+
+// Create and register the predictions skill
+predictSkill := predictskill.New(predictskill.Config{})
+commands.RegisterAgentOption(agent.WithCompiledSkill(predictSkill))
+```
+
+**Tools provided:**
+
+| Tool | Description |
+|------|-------------|
+| `get_markets` | Fetch active prediction markets with filters |
+| `get_orderbook` | Get order book for a market token |
+
 ## Dependencies
 
 - [omnillm-core](https://github.com/plexusone/omnillm-core) - LLM provider abstraction
 - [omnillm-langchaingo](https://github.com/plexusone/omnillm-langchaingo) - LangChainGo adapter
 - [langchaingo](https://github.com/tmc/langchaingo) - Go LLM framework
+- [omniagent](https://github.com/plexusone/omniagent) - AI agent framework (optional)
 
 ## Documentation
 
