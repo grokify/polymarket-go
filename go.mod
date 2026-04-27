@@ -53,7 +53,3 @@ require (
 	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.43.0 // indirect
 )
-
-replace github.com/plexusone/omniagent => ../../plexusone/omniagent
-
-replace github.com/plexusone/omniskill => ../../plexusone/omniskill
