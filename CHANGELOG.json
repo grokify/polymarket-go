@@ -7,6 +7,34 @@
   "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.2.0",
+      "date": "2026-04-27",
+      "highlights": [
+        { "description": "OmniAgent integration via compiled skill wrapper" },
+        { "description": "Full Polymarket SDK integration for trading support" },
+        { "description": "Cobra CLI with subcommand structure and superforecaster analysis" }
+      ],
+      "added": [
+        { "description": "Compiled skill wrapper implementing `compiled.Skill` interface", "commit": "5571086" },
+        { "description": "`get_markets` tool for fetching prediction markets with filters", "commit": "5571086" },
+        { "description": "`get_orderbook` tool for order book analysis", "commit": "5571086" },
+        { "description": "`--analyze` CLI flag for superforecaster market analysis", "commit": "be18dab" },
+        { "description": "Superforecaster and trade analysis prompts", "commit": "2a82dae" },
+        { "description": "polymarket-go-sdk integration for full trading support", "commit": "ed4c673" }
+      ],
+      "changed": [
+        { "description": "Migrated CLI to Cobra with subcommand structure", "commit": "b80132d" }
+      ],
+      "tests": [
+        { "description": "Unit tests for skill interface compliance and tool definitions", "commit": "5571086" }
+      ],
+      "dependencies": [
+        { "description": "omniagent v0.7.0 for compiled skill support", "commit": "e92ef55" },
+        { "description": "omniskill v0.7.0 for tool definitions", "commit": "e92ef55" },
+        { "description": "polymarket-go-sdk v1.1.2", "commit": "ea892fd" }
+      ]
+    },
+    {
       "version": "v0.1.0",
       "date": "2026-04-13",
       "highlights": [
