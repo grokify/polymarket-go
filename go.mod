@@ -4,8 +4,10 @@ go 1.26.1
 
 require (
 	github.com/GoPolymarket/polymarket-go-sdk v1.1.2
+	github.com/plexusone/omniagent v0.7.0
 	github.com/plexusone/omnillm-core v0.15.0
 	github.com/plexusone/omnillm-langchaingo v0.1.0
+	github.com/plexusone/omniskill v0.7.0
 	github.com/shopspring/decimal v1.4.0
 	github.com/spf13/cobra v1.10.2
 	github.com/tmc/langchaingo v0.1.14
@@ -35,6 +37,7 @@ require (
 	github.com/holiman/uint256 v1.3.2 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/pkoukk/tiktoken-go v0.1.8 // indirect
+	github.com/plexusone/omnistorage-core v0.3.0 // indirect
 	github.com/shirou/gopsutil v3.21.11+incompatible // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/supranational/blst v0.3.16 // indirect
@@ -50,3 +53,7 @@ require (
 	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.43.0 // indirect
 )
+
+replace github.com/plexusone/omniagent => ../../plexusone/omniagent
+
+replace github.com/plexusone/omniskill => ../../plexusone/omniskill
