@@ -4,7 +4,7 @@ go 1.26.1
 
 require (
 	github.com/GoPolymarket/polymarket-go-sdk v1.1.2
-	github.com/plexusone/omniagent v0.7.0
+	github.com/plexusone/omniagent v0.8.0
 	github.com/plexusone/omnillm-core v0.15.0
 	github.com/plexusone/omnillm-langchaingo v0.1.0
 	github.com/plexusone/omniskill v0.7.0
@@ -32,7 +32,7 @@ require (
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
-	github.com/grokify/mogo v0.74.2 // indirect
+	github.com/grokify/mogo v0.74.3 // indirect
 	github.com/grokify/sogo v0.14.0 // indirect
 	github.com/holiman/uint256 v1.3.2 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
