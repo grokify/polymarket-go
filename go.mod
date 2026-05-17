@@ -4,14 +4,21 @@ go 1.26.1
 
 require (
 	github.com/GoPolymarket/polymarket-go-sdk v1.1.2
+	github.com/agentplexus/omniretrieve v0.0.0-00010101000000-000000000000
 	github.com/plexusone/omniagent v0.8.0
 	github.com/plexusone/omnillm-core v0.15.0
 	github.com/plexusone/omnillm-langchaingo v0.1.0
+	github.com/plexusone/omniserp v0.8.1
 	github.com/plexusone/omniskill v0.7.0
 	github.com/shopspring/decimal v1.4.0
 	github.com/spf13/cobra v1.10.2
 	github.com/tmc/langchaingo v0.1.14
 	gopkg.in/yaml.v3 v3.0.1
+)
+
+replace (
+	github.com/agentplexus/omniretrieve => ../../plexusone/omniretrieve
+	github.com/plexusone/omniserp => ../../plexusone/omniserp
 )
 
 require (

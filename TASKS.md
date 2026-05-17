@@ -49,31 +49,37 @@ Required for real trading on Polymarket. **Completed via [polymarket-go-sdk](htt
 
 External data sources for market research and analysis.
 
-- [ ] **RAG Integration** - Vector database for semantic filtering
-  - [ ] Chroma or pgvector integration
-  - [ ] OpenAI embeddings (text-embedding-3-small)
-  - [ ] `CreateMarketsRAG()` - Build market vector index
-  - [ ] `QueryMarketsRAG()` - Semantic market search
-  - [ ] `CreateEventsRAG()` - Build event vector index
-  - [ ] `QueryEventsRAG()` - Semantic event search
+**Using [omniretrieve](https://github.com/plexusone/omniretrieve) for RAG and [omniserp](https://github.com/plexusone/omniserp) for search.**
 
-- [ ] **News Connector** - NewsAPI integration
-  - [ ] `GetArticlesForKeywords()` - Search news by keywords
-  - [ ] `GetTopArticlesForMarket()` - Top news for a market
-  - [ ] `GetArticlesForOptions()` - News for market outcomes
-  - [ ] `GetCategory()` - Infer news category from market
+- [ ] **RAG Integration** - Via omniretrieve with pgvector
+  - [ ] Add omniretrieve dependency
+  - [ ] pgvector store configuration (`internal/rag/store.go`)
+  - [ ] Embedding integration (OpenAI text-embedding-3-small)
+  - [ ] `IndexMarkets()` - Build market vector index
+  - [ ] `SearchMarkets()` - Semantic market search
+  - [ ] `IndexEvents()` - Build event vector index
+  - [ ] `SearchEvents()` - Semantic event search
+  - [ ] CLI: `rag index` and `rag search` commands
 
-- [ ] **Web Search** - Real-time information retrieval
-  - [ ] Tavily integration (or alternative)
-  - [ ] `SearchWeb()` - General web search
-  - [ ] `SearchNews()` - News-specific search
+- [ ] **News & Web Search** - Via omniserp (Serper/SerpAPI)
+  - [ ] Add omniserp dependency
+  - [ ] `SearchNews()` - News search with normalized results
+  - [ ] `SearchWeb()` - Web search with answer boxes
+  - [ ] `GetNewsForMarket()` - News relevant to a market question
+  - [ ] `GetNewsForKeywords()` - News by keywords
+  - [ ] CLI: `news` and `search` commands
+
+- [ ] **GraphRAG** (Future) - Relationship-aware retrieval
+  - [ ] Event → Market graph edges
+  - [ ] Topic/tag clustering
+  - [ ] Correlated market detection
+  - [ ] Neo4j or in-memory graph store
 
 - [x] **Rich Data Models** - Via polymarket-go-sdk
   - [x] `clobtypes.Trade` - Full trade model
   - [x] `clobtypes.Market` - Rich market model (50+ fields)
   - [x] `gamma.Event` - Event with markets, tags, metrics
   - [x] `clobtypes.OrderResponse` - Order response model
-  - [ ] `Article` - News article model (for NewsAPI)
 
 ## Phase 3: Agent Intelligence
 
