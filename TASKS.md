@@ -70,11 +70,13 @@ External data sources for market research and analysis.
   - [x] `GetNewsForKeywords()` - News by keywords
   - [x] CLI: `news` and `search` commands
 
-- [ ] **GraphRAG** (Future) - Relationship-aware retrieval
-  - [ ] Event → Market graph edges
-  - [ ] Topic/tag clustering
-  - [ ] Correlated market detection
-  - [ ] Neo4j or in-memory graph store
+- [x] **GraphRAG** - Relationship-aware retrieval (via omniretrieve)
+  - [x] Event → Market graph edges (`EdgeTypeHasMarket`)
+  - [x] Topic/tag clustering (`EdgeTypeTopicRelatesTo`)
+  - [x] Correlated market detection (`EdgeTypeCorrelatedWith`, `EdgeTypeSameEvent`)
+  - [x] In-memory graph store (Neo4j planned)
+  - [x] Hybrid vector+graph search
+  - [x] CLI: `graphrag index`, `graphrag related`, `graphrag topic`, `graphrag hybrid`
 
 - [x] **Rich Data Models** - Via polymarket-go-sdk
   - [x] `clobtypes.Trade` - Full trade model
