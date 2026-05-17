@@ -29,11 +29,14 @@ Go SDK for building AI trading agents on [Polymarket](https://polymarket.com) pr
 
 ## Features
 
-- 📊 **Polymarket API Client** - Full client for Gamma (markets) and CLOB (trading) APIs
-- 🤖 **Multi-Agent Workflows** - Define agent teams using [multi-agent-spec](https://github.com/plexusone/multi-agent-spec) format
-- 🧠 **LLM Integration** - Works with any LLM via [omnillm](https://github.com/plexusone/omnillm) + [LangChainGo](https://github.com/tmc/langchaingo)
-- 🚀 **Portable Specs** - Same agent definitions deploy to Claude Code, Go servers, or Kubernetes
-- 🔌 **OmniAgent Integration** - Compiled skill wrapper for embedding in [omniagent](https://github.com/plexusone/omniagent)-based agents
+- **Polymarket API Client** - Full client for Gamma (markets) and CLOB (trading) APIs
+- **REST API Server** - HTTP API with automatic OpenAPI spec generation (Huma + Chi)
+- **RAG & GraphRAG** - Semantic search over markets with knowledge graph traversal
+- **News & Web Search** - Real-time news and web search via omniserp
+- **Multi-Agent Workflows** - Define agent teams using [multi-agent-spec](https://github.com/plexusone/multi-agent-spec) format
+- **LLM Integration** - Works with any LLM via [omnillm](https://github.com/plexusone/omnillm) + [LangChainGo](https://github.com/tmc/langchaingo)
+- **Resilience Patterns** - Retry with backoff, circuit breakers for external services
+- **OmniAgent Integration** - Compiled skill wrapper for embedding in [omniagent](https://github.com/plexusone/omniagent)-based agents
 
 ## Installation
 
@@ -43,19 +46,51 @@ go get github.com/grokify/polymarket-go
 
 ## Quick Start
 
-### Run the Demo
-
-Fetch live market data from Polymarket:
+### CLI Commands
 
 ```bash
-go run ./cmd/polymarket-agent/ --demo --demo-limit=10
+# Build the CLI
+go build -o polymarket-agent ./cmd/polymarket-agent/
+
+# List markets
+polymarket-agent markets list --limit=10 --min-liquidity=50000
+
+# Analyze markets with AI superforecaster
+polymarket-agent markets analyze --limit=1
+
+# Search news
+polymarket-agent news "bitcoin ETF"
+
+# Semantic search with RAG
+polymarket-agent rag index --limit=100
+polymarket-agent rag search "cryptocurrency regulation"
+
+# Start REST API server
+polymarket-agent serve --port=8080
 ```
 
-Output:
+### REST API Server
+
+Start the server and access the auto-generated OpenAPI docs:
+
+```bash
+polymarket-agent serve --port=8080 --with-news
 ```
-level=INFO msg="market 1" question="Will Panama win the 2026 FIFA World Cup?" liquidity=$4007373 ...
-level=INFO msg="market 2" question="Will Haiti win the 2026 FIFA World Cup?" liquidity=$3860101 ...
-```
+
+**Endpoints:**
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/health` | Health check |
+| GET | `/markets` | List markets with filters |
+| GET | `/markets/{conditionId}` | Get single market |
+| GET | `/markets/{tokenId}/orderbook` | Order book |
+| GET | `/markets/{tokenId}/price` | Token price |
+| GET | `/news?q=query` | News search |
+| GET | `/search?q=query` | Web search |
+| POST | `/rag/markets/search` | Semantic market search |
+
+OpenAPI documentation available at `/docs`.
 
 ### Use the Polymarket Client
 
@@ -75,31 +110,46 @@ markets, err := client.GetMarkets(ctx, polymarket.GetMarketsParams{
 book, err := client.GetOrderBook(ctx, tokenID)
 ```
 
+### RAG Semantic Search
+
+```go
+import "github.com/grokify/polymarket-go/internal/rag"
+
+// Create RAG store with embedder
+store, _ := rag.NewStore(rag.StoreConfig{
+    VectorIndex: vectorIndex,
+    Embedder:    embedder,
+})
+
+// Index markets
+store.IndexMarkets(ctx, markets)
+
+// Semantic search
+results, _ := store.SearchMarkets(ctx, "cryptocurrency regulation", 10)
+```
+
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  polymarket-go                                              │
-├─────────────────────────────────────────────────────────────┤
-│  cmd/polymarket-agent/     CLI for running agent workflows  │
-├─────────────────────────────────────────────────────────────┤
-│  omniagent/skill/          Compiled skill for omniagent     │
-├─────────────────────────────────────────────────────────────┤
-│  agents/specs/             Multi-agent-spec definitions     │
-│  ├── agents/               Agent markdown files             │
-│  ├── team.json             Workflow configuration           │
-│  └── deployment-*.json     Platform-specific configs        │
-├─────────────────────────────────────────────────────────────┤
-│  internal/                                                  │
-│  ├── polymarket/           Polymarket API client            │
-│  ├── loader/               Spec file parsers                │
-│  ├── executor/             Workflow execution engine        │
-│  └── tools/                Agent tools for Polymarket       │
-├─────────────────────────────────────────────────────────────┤
-│  omnillm-langchaingo       LangChainGo adapter              │
-├─────────────────────────────────────────────────────────────┤
-│  omnillm-core              Unified LLM provider abstraction │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│  polymarket-go                                                   │
+├─────────────────────────────────────────────────────────────────┤
+│  cmd/polymarket-agent/     CLI and REST server                   │
+├─────────────────────────────────────────────────────────────────┤
+│  internal/                                                       │
+│  ├── server/               REST API (Huma + Chi)                 │
+│  ├── polymarket/           Polymarket API client                 │
+│  ├── rag/                  RAG & GraphRAG retrieval              │
+│  ├── news/                 News & web search (omniserp)          │
+│  ├── prompts/              LLM prompts (superforecaster, etc.)   │
+│  ├── resilience/           Retry, circuit breaker patterns       │
+│  ├── executor/             Workflow execution engine             │
+│  └── tools/                Agent tools for Polymarket            │
+├─────────────────────────────────────────────────────────────────┤
+│  omniagent/skill/          Compiled skill for omniagent          │
+├─────────────────────────────────────────────────────────────────┤
+│  agents/specs/             Multi-agent-spec definitions          │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ## Agent Team
@@ -114,64 +164,39 @@ The default trading team consists of three agents in a graph workflow:
 
 Workflow: `discover → forecast → execute`
 
-## Agent Specs
+## Environment Variables
 
-Agents are defined in markdown with YAML frontmatter:
-
-```markdown
----
-name: market-analyst
-model: sonnet
-tools: [WebSearch, WebFetch, Read, Write]
-role: Market Research Analyst
-goal: Identify mispriced markets with >10% expected edge
----
-
-You are a market analyst specializing in Polymarket...
-```
-
-## Deployment Targets
-
-The same agent specs can deploy to multiple platforms:
-
-| Platform | Config File | Use Case |
-|----------|-------------|----------|
-| Go Server | `deployment-go-server.json` | Production trading |
-| Claude Code | `deployment-claude-code.json` | Development/testing |
-
-## OmniAgent Integration
-
-Use polymarket-go as a compiled skill in omniagent-based agents:
-
-```go
-import (
-    "github.com/plexusone/omniagent/agent"
-    predictskill "github.com/grokify/polymarket-go/omniagent/skill"
-)
-
-// Create and register the predictions skill
-predictSkill := predictskill.New(predictskill.Config{})
-commands.RegisterAgentOption(agent.WithCompiledSkill(predictSkill))
-```
-
-**Tools provided:**
-
-| Tool | Description |
-|------|-------------|
-| `get_markets` | Fetch active prediction markets with filters |
-| `get_orderbook` | Get order book for a market token |
+| Variable | Description |
+|----------|-------------|
+| `ANTHROPIC_API_KEY` | Anthropic API key for LLM |
+| `OPENAI_API_KEY` | OpenAI API key for embeddings |
+| `SERPER_API_KEY` | Serper API key for news/web search |
+| `SERPAPI_API_KEY` | SerpAPI key (alternative to Serper) |
+| `POLYGON_WALLET_PRIVATE_KEY` | Private key for trading |
+| `POLYMARKET_API_KEY` | Polymarket CLOB API key |
+| `POLYMARKET_API_SECRET` | Polymarket CLOB API secret |
+| `POLYMARKET_API_PASSPHRASE` | Polymarket CLOB API passphrase |
 
 ## Dependencies
 
-- [omnillm-core](https://github.com/plexusone/omnillm-core) - LLM provider abstraction
-- [omnillm-langchaingo](https://github.com/plexusone/omnillm-langchaingo) - LangChainGo adapter
-- [langchaingo](https://github.com/tmc/langchaingo) - Go LLM framework
-- [omniagent](https://github.com/plexusone/omniagent) - AI agent framework (optional)
+| Package | Purpose |
+|---------|---------|
+| [polymarket-go-sdk](https://github.com/GoPolymarket/polymarket-go-sdk) | Polymarket trading SDK |
+| [huma](https://github.com/danielgtaylor/huma) | REST API with OpenAPI generation |
+| [chi](https://github.com/go-chi/chi) | HTTP router |
+| [omnillm-core](https://github.com/plexusone/omnillm-core) | LLM provider abstraction |
+| [omniretrieve](https://github.com/plexusone/omniretrieve) | RAG & GraphRAG retrieval |
+| [omniserp](https://github.com/plexusone/omniserp) | News & web search |
+| [langchaingo](https://github.com/tmc/langchaingo) | Go LLM framework |
+| [omniagent](https://github.com/plexusone/omniagent) | AI agent framework (optional) |
 
 ## Documentation
 
-- [Technical Requirements Document](docs/design/TRD.md)
-- [Component Integration Guide](docs/design/COMPONENTS.md)
+- [Getting Started](docs/getting-started/quickstart.md)
+- [CLI Reference](docs/getting-started/cli.md)
+- [REST API Reference](docs/api/rest-server.md)
+- [Architecture Decisions](docs/specs/adr/)
+- [Roadmap](docs/specs/ROADMAP.md)
 
 ## License
 

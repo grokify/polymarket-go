@@ -45,20 +45,32 @@ nav:
   - Getting Started:
       - Installation: getting-started/installation.md
       - Quick Start: getting-started/quickstart.md
-      - CLI Usage: getting-started/cli.md
-  - Design:
-      - Technical Requirements: design/TRD.md
-      - Component Integration: design/COMPONENTS.md
+      - CLI Reference: getting-started/cli.md
+  - API Reference:
+      - REST Server: api/rest-server.md
+      - Polymarket Client: api/polymarket.md
+      - Workflow Executor: api/executor.md
+      - Spec Loader: api/loader.md
   - Agents:
       - Overview: agents/index.md
       - Market Analyst: agents/market-analyst.md
       - Superforecaster: agents/superforecaster.md
       - Trader: agents/trader.md
       - Team Configuration: agents/team.md
-  - API Reference:
-      - Polymarket Client: api/polymarket.md
-      - Workflow Executor: api/executor.md
-      - Spec Loader: api/loader.md
+  - Specifications:
+      - Roadmap: specs/ROADMAP.md
+      - Technical Requirements: specs/TRD.md
+      - Component Integration: specs/COMPONENTS.md
+      - Architecture Decisions:
+          - Overview: specs/adr/index.md
+          - "ADR-0001: polymarket-go-sdk": specs/adr/0001-use-polymarket-go-sdk.md
+          - "ADR-0002: Cobra CLI": specs/adr/0002-use-cobra-for-cli.md
+          - "ADR-0003: omniretrieve RAG": specs/adr/0003-use-omniretrieve-for-rag.md
+          - "ADR-0004: omniserp Search": specs/adr/0004-use-omniserp-for-search.md
+          - "ADR-0005: omnillm LLM": specs/adr/0005-use-omnillm-for-llm-abstraction.md
+          - "ADR-0006: Resilience Patterns": specs/adr/0006-resilience-patterns.md
+          - "ADR-0007: GraphRAG Design": specs/adr/0007-graphrag-knowledge-graph-design.md
+          - "ADR-0008: REST Server": specs/adr/0008-rest-server-with-huma-chi.md
   - Releases:
       - Changelog: releases/CHANGELOG.md
       - v0.2.0: releases/v0.2.0.md
