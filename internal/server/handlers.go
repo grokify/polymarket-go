@@ -27,13 +27,13 @@ func (s *Server) handleHealth(ctx context.Context, input *HealthInput) (*HealthO
 // ListMarketsInput is the input for listing markets.
 type ListMarketsInput struct {
 	Limit        int     `query:"limit" default:"10" minimum:"1" maximum:"100" doc:"Maximum number of markets to return"`
-	Active       *bool   `query:"active" doc:"Filter by active status"`
-	Closed       *bool   `query:"closed" doc:"Filter by closed status"`
+	Active       string  `query:"active" enum:"true,false," doc:"Filter by active status (empty for any)"`
+	Closed       string  `query:"closed" enum:"true,false," doc:"Filter by closed status (empty for any)"`
 	MinLiquidity float64 `query:"min_liquidity" doc:"Minimum liquidity in USD"`
 	MaxLiquidity float64 `query:"max_liquidity" doc:"Maximum liquidity in USD"`
 	TextQuery    string  `query:"q" doc:"Text search query"`
 	TagSlug      string  `query:"tag" doc:"Filter by tag slug"`
-	Order        string  `query:"order" enum:"liquidity,volume,end_date" default:"liquidity" doc:"Sort order field"`
+	Order        string  `query:"order" enum:"liquidity,volume,end_date," default:"liquidity" doc:"Sort order field"`
 	Ascending    bool    `query:"ascending" doc:"Sort ascending instead of descending"`
 	Cursor       string  `query:"cursor" doc:"Pagination cursor"`
 }
@@ -69,8 +69,6 @@ type MarketResponse struct {
 func (s *Server) handleListMarkets(ctx context.Context, input *ListMarketsInput) (*ListMarketsOutput, error) {
 	params := polymarket.GetMarketsParams{
 		Limit:     input.Limit,
-		Active:    input.Active,
-		Closed:    input.Closed,
 		LiqMin:    input.MinLiquidity,
 		LiqMax:    input.MaxLiquidity,
 		TextQuery: input.TextQuery,
@@ -78,6 +76,22 @@ func (s *Server) handleListMarkets(ctx context.Context, input *ListMarketsInput)
 		Order:     input.Order,
 		Ascending: input.Ascending,
 		Cursor:    input.Cursor,
+	}
+
+	// Convert string bools to *bool
+	if input.Active == "true" {
+		active := true
+		params.Active = &active
+	} else if input.Active == "false" {
+		active := false
+		params.Active = &active
+	}
+	if input.Closed == "true" {
+		closed := true
+		params.Closed = &closed
+	} else if input.Closed == "false" {
+		closed := false
+		params.Closed = &closed
 	}
 
 	markets, err := s.pmClient.GetMarkets(ctx, params)

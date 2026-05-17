@@ -215,6 +215,7 @@ func extractKeyTerms(question string) string {
 		"what", "when", "where", "who", "why", "how",
 		"this", "that", "these", "those",
 		"in", "on", "at", "to", "for", "of", "with", "by",
+		"and", "or", "but", "not", "from", "into",
 	}
 
 	words := strings.Fields(strings.ToLower(question))
