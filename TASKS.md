@@ -109,11 +109,11 @@ Enhanced agent capabilities and workflows.
   - [x] `DivideList()` - Chunk data for long contexts
   - [x] `ProcessDataChunks()` - Process chunks sequentially with aggregation
 
-- [x] **Autonomous Trading Loop** - Scheduled execution (partial)
+- [x] **Autonomous Trading Loop** - Scheduled execution
   - [x] Interval-based scheduling (`trade auto --interval`)
   - [x] `OneBestTrade()` - Single best trade workflow (`trade recommend`)
-  - [ ] Recursive retry with backoff
-  - [ ] Circuit breaker for failures
+  - [x] Recursive retry with backoff (`internal/resilience/retry.go`)
+  - [x] Circuit breaker for failures (`internal/resilience/circuitbreaker.go`)
   - [ ] Position maintenance logic
 
 - [ ] **Market Creation Agent** - Suggest new markets
@@ -132,9 +132,10 @@ Production readiness and tooling.
   - [x] `events list` - List events with filters (--json)
   - [x] `trade auto` - Run autonomous trading loop (--interval, --execute)
   - [x] `trade recommend` - Get single trade recommendation
-  - [ ] `get-relevant-news` - Search news by keywords (needs NewsAPI)
-  - [ ] `create-local-markets-rag` - Build local RAG index (needs RAG)
-  - [ ] `query-local-markets-rag` - Query RAG index (needs RAG)
+  - [x] `news` - Search news by keywords (via omniserp)
+  - [x] `search` - Web search with answer boxes
+  - [x] `rag index` - Build local RAG index (markets/events)
+  - [x] `rag search` - Query RAG index semantically
   - [ ] `ask-llm` - General LLM queries
 
 - [ ] **REST Server** - HTTP API
@@ -150,9 +151,10 @@ Production readiness and tooling.
   - [ ] Agent behavior tests
   - [ ] Mock LLM responses for testing
 
-- [ ] **Error Handling** - Resilience patterns
+- [x] **Error Handling** - Resilience patterns (partial)
   - [x] Built-in retries via polymarket-go-sdk
-  - [ ] Circuit breakers for external services
+  - [x] Retry with exponential backoff (`internal/resilience/retry.go`)
+  - [x] Circuit breakers for external services (`internal/resilience/circuitbreaker.go`)
   - [ ] Graceful degradation
   - [ ] Structured error types
 
