@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/agentplexus/omniretrieve/retrieve"
-	"github.com/agentplexus/omniretrieve/vector"
 	"github.com/grokify/polymarket-go/internal/polymarket"
+	"github.com/plexusone/omniretrieve/retrieve"
+	"github.com/plexusone/omniretrieve/vector"
 )
 
 // Store provides RAG capabilities for Polymarket markets and events.

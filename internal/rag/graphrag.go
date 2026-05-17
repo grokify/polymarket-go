@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/agentplexus/omniretrieve/graph"
-	"github.com/agentplexus/omniretrieve/hybrid"
-	"github.com/agentplexus/omniretrieve/retrieve"
-	"github.com/agentplexus/omniretrieve/vector"
+	"github.com/plexusone/omniretrieve/graph"
+	"github.com/plexusone/omniretrieve/hybrid"
+	"github.com/plexusone/omniretrieve/retrieve"
+	"github.com/plexusone/omniretrieve/vector"
 )
 
 // Node types for Polymarket graph.

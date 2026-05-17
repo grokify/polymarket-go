@@ -7,9 +7,9 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/agentplexus/omniretrieve/memory"
 	"github.com/grokify/polymarket-go/internal/polymarket"
 	"github.com/grokify/polymarket-go/internal/rag"
+	"github.com/plexusone/omniretrieve/memory"
 	"github.com/spf13/cobra"
 )
 

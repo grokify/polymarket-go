@@ -4,21 +4,16 @@ go 1.26.1
 
 require (
 	github.com/GoPolymarket/polymarket-go-sdk v1.1.2
-	github.com/agentplexus/omniretrieve v0.0.0-00010101000000-000000000000
 	github.com/plexusone/omniagent v0.8.0
 	github.com/plexusone/omnillm-core v0.15.0
 	github.com/plexusone/omnillm-langchaingo v0.1.0
+	github.com/plexusone/omniretrieve v0.0.0-00010101000000-000000000000
 	github.com/plexusone/omniserp v0.8.1
 	github.com/plexusone/omniskill v0.7.0
 	github.com/shopspring/decimal v1.4.0
 	github.com/spf13/cobra v1.10.2
 	github.com/tmc/langchaingo v0.1.14
 	gopkg.in/yaml.v3 v3.0.1
-)
-
-replace (
-	github.com/agentplexus/omniretrieve => ../../plexusone/omniretrieve
-	github.com/plexusone/omniserp => ../../plexusone/omniserp
 )
 
 require (
@@ -48,8 +43,8 @@ require (
 	github.com/shirou/gopsutil v3.21.11+incompatible // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/supranational/blst v0.3.16 // indirect
-	github.com/tklauser/go-sysconf v0.3.16 // indirect
-	github.com/tklauser/numcpus v0.11.0 // indirect
+	github.com/tklauser/go-sysconf v0.4.0 // indirect
+	github.com/tklauser/numcpus v0.12.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	go.mongodb.org/mongo-driver v1.17.9 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
@@ -58,5 +53,10 @@ require (
 	go.opentelemetry.io/otel/trace v1.43.0 // indirect
 	golang.org/x/crypto v0.50.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.43.0 // indirect
+	golang.org/x/sys v0.44.0 // indirect
+)
+
+replace (
+	github.com/plexusone/omniretrieve => ../../plexusone/omniretrieve
+	github.com/plexusone/omniserp => ../../plexusone/omniserp
 )
