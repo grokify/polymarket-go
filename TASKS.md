@@ -2,6 +2,16 @@
 
 Feature parity roadmap for polymarket-go vs [Polymarket/agents](https://github.com/Polymarket/agents).
 
+## Next Priorities
+
+| Priority | Task | Rationale |
+|----------|------|-----------|
+| 1 | **REST Server** | Enables API access for integrations and external tools |
+| 2 | **Testing** | Required for production readiness and CI/CD |
+| 3 | **Market Creation Agent** | Novel AI feature for suggesting new prediction markets |
+| 4 | **Position Maintenance** | Needed for fully autonomous trading |
+| 5 | **Structured Error Types** | Better error handling and debugging |
+
 ## Phase 1: Trading Infrastructure ✅
 
 Required for real trading on Polymarket. **Completed via [polymarket-go-sdk](https://github.com/GoPolymarket/polymarket-go-sdk) integration.**
