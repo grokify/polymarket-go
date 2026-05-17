@@ -6,9 +6,9 @@ require (
 	github.com/GoPolymarket/polymarket-go-sdk v1.1.2
 	github.com/danielgtaylor/huma/v2 v2.38.0
 	github.com/go-chi/chi/v5 v5.2.5
+	github.com/plexusone/langchaingo-omnillm v0.2.0
 	github.com/plexusone/omniagent v0.8.0
 	github.com/plexusone/omnillm-core v0.15.0
-	github.com/plexusone/omnillm-langchaingo v0.1.0
 	github.com/plexusone/omniretrieve v0.2.0
 	github.com/plexusone/omniserp v0.8.1
 	github.com/plexusone/omniskill v0.7.0

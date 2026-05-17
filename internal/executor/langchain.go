@@ -5,7 +5,7 @@ import (
 	"context"
 
 	"github.com/plexusone/omnillm-core/provider"
-	omnillm "github.com/plexusone/omnillm-langchaingo"
+	omnillm "github.com/plexusone/langchaingo-omnillm"
 	"github.com/tmc/langchaingo/llms"
 )
 
@@ -23,7 +23,7 @@ type LangChainConfig struct {
 	MaxTokens   int
 }
 
-// NewLangChainExecutor creates a new LangChainExecutor using omnillm-langchaingo.
+// NewLangChainExecutor creates a new LangChainExecutor using langchaingo-omnillm.
 func NewLangChainExecutor(prov provider.Provider, cfg LangChainConfig) *LangChainExecutor {
 	// Create LangChainGo model adapter from omnillm provider
 	model := omnillm.New(prov, cfg.Model)
