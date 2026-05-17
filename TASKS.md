@@ -51,23 +51,24 @@ External data sources for market research and analysis.
 
 **Using [omniretrieve](https://github.com/plexusone/omniretrieve) for RAG and [omniserp](https://github.com/plexusone/omniserp) for search.**
 
-- [ ] **RAG Integration** - Via omniretrieve with pgvector
-  - [ ] Add omniretrieve dependency
-  - [ ] pgvector store configuration (`internal/rag/store.go`)
-  - [ ] Embedding integration (OpenAI text-embedding-3-small)
-  - [ ] `IndexMarkets()` - Build market vector index
-  - [ ] `SearchMarkets()` - Semantic market search
-  - [ ] `IndexEvents()` - Build event vector index
-  - [ ] `SearchEvents()` - Semantic event search
-  - [ ] CLI: `rag index` and `rag search` commands
+- [x] **RAG Integration** - Via omniretrieve with pgvector
+  - [x] Add omniretrieve dependency
+  - [x] Store configuration (`internal/rag/store.go`)
+  - [x] Embedding integration (OpenAI text-embedding-3-small)
+  - [x] `IndexMarkets()` - Build market vector index
+  - [x] `SearchMarkets()` - Semantic market search
+  - [x] `IndexEvents()` - Build event vector index
+  - [x] `SearchEvents()` - Semantic event search
+  - [x] CLI: `rag index` and `rag search` commands
+  - [ ] pgvector persistent store (currently in-memory)
 
-- [ ] **News & Web Search** - Via omniserp (Serper/SerpAPI)
-  - [ ] Add omniserp dependency
-  - [ ] `SearchNews()` - News search with normalized results
-  - [ ] `SearchWeb()` - Web search with answer boxes
-  - [ ] `GetNewsForMarket()` - News relevant to a market question
-  - [ ] `GetNewsForKeywords()` - News by keywords
-  - [ ] CLI: `news` and `search` commands
+- [x] **News & Web Search** - Via omniserp (Serper/SerpAPI)
+  - [x] Add omniserp dependency
+  - [x] `SearchNews()` - News search with normalized results
+  - [x] `SearchWeb()` - Web search with answer boxes
+  - [x] `GetNewsForMarket()` - News relevant to a market question
+  - [x] `GetNewsForKeywords()` - News by keywords
+  - [x] CLI: `news` and `search` commands
 
 - [ ] **GraphRAG** (Future) - Relationship-aware retrieval
   - [ ] Event → Market graph edges
