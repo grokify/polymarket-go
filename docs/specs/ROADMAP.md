@@ -6,11 +6,10 @@ Feature parity roadmap for polymarket-go vs [Polymarket/agents](https://github.c
 
 | Priority | Task | Rationale |
 |----------|------|-----------|
-| 1 | **REST Server** | Enables API access for integrations and external tools |
-| 2 | **Testing** | Required for production readiness and CI/CD |
-| 3 | **Market Creation Agent** | Novel AI feature for suggesting new prediction markets |
-| 4 | **Position Maintenance** | Needed for fully autonomous trading |
-| 5 | **Structured Error Types** | Better error handling and debugging |
+| 1 | **Testing** | Required for production readiness and CI/CD |
+| 2 | **Market Creation Agent** | Novel AI feature for suggesting new prediction markets |
+| 3 | **Position Maintenance** | Needed for fully autonomous trading |
+| 4 | **Structured Error Types** | Better error handling and debugging |
 
 ## Phase 1: Trading Infrastructure ✅
 
@@ -150,12 +149,20 @@ Production readiness and tooling.
   - [x] `rag search` - Query RAG index semantically
   - [ ] `ask-llm` - General LLM queries
 
-- [ ] **REST Server** - HTTP API
-  - [ ] FastAPI-equivalent using Chi or Gin
-  - [ ] `/markets` - Market endpoints
-  - [ ] `/events` - Event endpoints
-  - [ ] `/trades` - Trade endpoints
-  - [ ] `/agent` - Agent control endpoints
+- [x] **REST Server** - HTTP API (Huma + Chi)
+  - [x] Huma v2 for automatic OpenAPI spec generation
+  - [x] Chi v5 router with middleware (logging, recovery, timeouts)
+  - [x] `/health` - Health check endpoint
+  - [x] `/markets` - List markets with filters
+  - [x] `/markets/{conditionId}` - Get single market
+  - [x] `/markets/{tokenId}/orderbook` - Order book endpoint
+  - [x] `/markets/{tokenId}/price` - Price endpoint
+  - [x] `/news` - News search (optional, via omniserp)
+  - [x] `/search` - Web search (optional, via omniserp)
+  - [x] `/rag/markets/search` - Semantic market search (optional)
+  - [x] `/rag/events/search` - Semantic event search (optional)
+  - [x] `/rag/markets/index` - Index markets for RAG (optional)
+  - [x] CLI: `serve` command with --port, --with-news flags
 
 - [ ] **Testing** - Comprehensive test suite
   - [ ] Unit tests for all packages
