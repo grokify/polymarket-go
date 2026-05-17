@@ -132,23 +132,23 @@ results, _ := store.SearchMarkets(ctx, "cryptocurrency regulation", 10)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  polymarket-go                                                   │
+│  polymarket-go                                                  │
 ├─────────────────────────────────────────────────────────────────┤
-│  cmd/polymarket-agent/     CLI and REST server                   │
+│  cmd/polymarket-agent/     CLI and REST server                  │
 ├─────────────────────────────────────────────────────────────────┤
-│  internal/                                                       │
-│  ├── server/               REST API (Huma + Chi)                 │
-│  ├── polymarket/           Polymarket API client                 │
-│  ├── rag/                  RAG & GraphRAG retrieval              │
-│  ├── news/                 News & web search (omniserp)          │
-│  ├── prompts/              LLM prompts (superforecaster, etc.)   │
-│  ├── resilience/           Retry, circuit breaker patterns       │
-│  ├── executor/             Workflow execution engine             │
-│  └── tools/                Agent tools for Polymarket            │
+│  internal/                                                      │
+│  ├── server/               REST API (Huma + Chi)                │
+│  ├── polymarket/           Polymarket API client                │
+│  ├── rag/                  RAG & GraphRAG retrieval             │
+│  ├── news/                 News & web search (omniserp)         │
+│  ├── prompts/              LLM prompts (superforecaster, etc.)  │
+│  ├── resilience/           Retry, circuit breaker patterns      │
+│  ├── executor/             Workflow execution engine            │
+│  └── tools/                Agent tools for Polymarket           │
 ├─────────────────────────────────────────────────────────────────┤
-│  omniagent/skill/          Compiled skill for omniagent          │
+│  omniagent/skill/          Compiled skill for omniagent         │
 ├─────────────────────────────────────────────────────────────────┤
-│  agents/specs/             Multi-agent-spec definitions          │
+│  agents/specs/             Multi-agent-spec definitions         │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
