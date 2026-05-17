@@ -97,18 +97,17 @@ Enhanced agent capabilities and workflows.
   - [x] Edge calculation prompt (`EdgeCalculation()`)
   - [x] Risk assessment prompt (`RiskAssessment()`)
 
-- [ ] **Trade Recommendation Pipeline** - Full workflow
-  - [ ] `FilterEventsWithRAG()` - Semantic event filtering (needs RAG)
-  - [ ] `MapEventsToMarkets()` - Event to market mapping
-  - [ ] `FilterMarketsWithRAG()` - Semantic market filtering (needs RAG)
+- [x] **Trade Recommendation Pipeline** - Full workflow
+  - [x] `FilterEventsWithRAG()` - Semantic event filtering with RAG
+  - [x] `MapEventsToMarkets()` - Event to market mapping
+  - [x] `FilterMarketsWithRAG()` - Semantic market filtering with RAG
   - [x] `SourceBestTrade()` - Analyze and recommend trade
   - [x] `FormatTradeForExecution()` - Extract trade parameters (`ParseTradeResponse()`)
 
-- [x] **Token Management** - LLM context optimization (partial)
+- [x] **Token Management** - LLM context optimization
   - [x] `EstimateTokens()` - Token count estimation
   - [x] `DivideList()` - Chunk data for long contexts
-  - [ ] `ProcessDataChunk()` - Process chunks sequentially
-  - [ ] Multi-chunk LLM calls with aggregation
+  - [x] `ProcessDataChunks()` - Process chunks sequentially with aggregation
 
 - [x] **Autonomous Trading Loop** - Scheduled execution (partial)
   - [x] Interval-based scheduling (`trade auto --interval`)
