@@ -9,7 +9,7 @@ require (
 	github.com/plexusone/omniagent v0.8.0
 	github.com/plexusone/omnillm-core v0.15.0
 	github.com/plexusone/omnillm-langchaingo v0.1.0
-	github.com/plexusone/omniretrieve v0.0.0-00010101000000-000000000000
+	github.com/plexusone/omniretrieve v0.2.0
 	github.com/plexusone/omniserp v0.8.1
 	github.com/plexusone/omniskill v0.7.0
 	github.com/shopspring/decimal v1.4.0
@@ -56,9 +56,4 @@ require (
 	golang.org/x/crypto v0.50.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
 	golang.org/x/sys v0.44.0 // indirect
-)
-
-replace (
-	github.com/plexusone/omniretrieve => ../../plexusone/omniretrieve
-	github.com/plexusone/omniserp => ../../plexusone/omniserp
 )
