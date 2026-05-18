@@ -23,7 +23,7 @@
  [loc-svg]: https://tokei.rs/b1/github/grokify/polymarket-go
  [repo-url]: https://github.com/grokify/polymarket-go
  [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
- [license-url]: https://github.com/grokify/polymarket-go/blob/master/LICENSE
+ [license-url]: https://github.com/grokify/polymarket-go/blob/main/LICENSE
 
 Go SDK for building AI trading agents on [Polymarket](https://polymarket.com) prediction markets.
 
