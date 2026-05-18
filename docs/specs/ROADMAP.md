@@ -6,10 +6,11 @@ Feature parity roadmap for polymarket-go vs [Polymarket/agents](https://github.c
 
 | Priority | Task | Rationale |
 |----------|------|-----------|
-| 1 | **Testing** | Required for production readiness and CI/CD |
+| 1 | **Boost Test Coverage** | news (20%), server (27%) need integration tests |
 | 2 | **Market Creation Agent** | Novel AI feature for suggesting new prediction markets |
 | 3 | **Position Maintenance** | Needed for fully autonomous trading |
-| 4 | **Structured Error Types** | Better error handling and debugging |
+| 4 | **Persistent RAG Store** | pgvector for production RAG persistence |
+| 5 | **Trade Execution** | Implement actual order placement (currently stubbed) |
 
 ## Phase 1: Trading Infrastructure ✅
 
@@ -147,7 +148,7 @@ Production readiness and tooling.
   - [x] `search` - Web search with answer boxes
   - [x] `rag index` - Build local RAG index (markets/events)
   - [x] `rag search` - Query RAG index semantically
-  - [ ] `ask-llm` - General LLM queries
+  - [x] `ask` - Ad-hoc LLM queries with streaming support
 
 - [x] **REST Server** - HTTP API (Huma + Chi)
   - [x] Huma v2 for automatic OpenAPI spec generation
@@ -165,17 +166,19 @@ Production readiness and tooling.
   - [x] CLI: `serve` command with --port, --with-news flags
 
 - [ ] **Testing** - Comprehensive test suite
-  - [ ] Unit tests for all packages
+  - [x] Unit tests for resilience (98%), llm (96%), loader (82%), errors (80%), prompts (75%), rag (67%), executor (66%), tools (59%), polymarket (39%)
+  - [ ] Unit tests for news (20%), server (27%) - require external service mocks
   - [ ] Integration tests for API clients
   - [ ] Agent behavior tests
-  - [ ] Mock LLM responses for testing
+  - [x] Mock LLM responses for testing (`internal/prompts/agent_test.go`)
 
-- [x] **Error Handling** - Resilience patterns (partial)
+- [x] **Error Handling** - Resilience patterns
   - [x] Built-in retries via polymarket-go-sdk
   - [x] Retry with exponential backoff (`internal/resilience/retry.go`)
   - [x] Circuit breakers for external services (`internal/resilience/circuitbreaker.go`)
+  - [x] Structured error types (`internal/errors/`) with Retryable and HTTPStatusCoder interfaces
   - [ ] Graceful degradation
-  - [ ] Structured error types
+  - [ ] Integrate structured errors into all packages
 
 ## SDK Integration
 
