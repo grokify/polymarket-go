@@ -7,6 +7,7 @@ import (
 	"log/slog"
 	"sync"
 
+	perrors "github.com/grokify/polymarket-go/internal/errors"
 	"github.com/plexusone/omnillm-core/provider"
 )
 
@@ -50,10 +51,14 @@ func New(cfg Config) *Executor {
 	}
 }
 
+// DefaultModel is the default LLM model if not specified in the step.
+const DefaultModel = "claude-sonnet-4-20250514"
+
 // Step represents a workflow step to execute.
 type Step struct {
 	Name         string
 	AgentName    string
+	Model        string // LLM model to use (defaults to DefaultModel if empty)
 	Instructions string
 	Inputs       map[string]any
 	DependsOn    []string
@@ -73,29 +78,51 @@ func (e *Executor) ExecuteStep(ctx context.Context, step Step) (*StepResult, err
 		e.mu.RUnlock()
 
 		if !ok {
-			return nil, fmt.Errorf("dependency %s not yet executed", dep)
+			return nil, &perrors.DependencyError{
+				Step:       step.Name,
+				Dependency: dep,
+				Reason:     "not yet executed",
+			}
 		}
 		if result.Error != nil {
-			return nil, fmt.Errorf("dependency %s failed: %w", dep, result.Error)
+			return nil, &perrors.DependencyError{
+				Step:       step.Name,
+				Dependency: dep,
+				Reason:     "failed",
+				Err:        result.Error,
+			}
 		}
 	}
 
 	// Build prompt with inputs
 	prompt := buildPrompt(step)
 
+	// Use model from step or default
+	model := step.Model
+	if model == "" {
+		model = DefaultModel
+	}
+
 	// Execute via LLM
 	resp, err := e.llm.CreateChatCompletion(ctx, &provider.ChatCompletionRequest{
-		Model: "claude-sonnet-4-20250514", // TODO: Get from agent spec
+		Model: model,
 		Messages: []provider.Message{
 			{Role: provider.RoleSystem, Content: step.Instructions},
 			{Role: provider.RoleUser, Content: prompt},
 		},
 	})
 	if err != nil {
+		llmErr := &perrors.LLMError{
+			Provider:  "omnillm",
+			Model:     model,
+			Operation: "ExecuteStep:" + step.Name,
+			Reason:    "chat completion failed",
+			Err:       err,
+		}
 		return &StepResult{
 			StepName: step.Name,
-			Error:    err,
-		}, err
+			Error:    llmErr,
+		}, llmErr
 	}
 
 	// Parse outputs

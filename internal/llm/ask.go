@@ -3,11 +3,10 @@ package llm
 
 import (
 	"context"
-	"errors"
-	"fmt"
 	"io"
 	"strings"
 
+	perrors "github.com/grokify/polymarket-go/internal/errors"
 	"github.com/plexusone/omnillm-core/provider"
 )
 
@@ -45,10 +44,17 @@ const DefaultMaxTokens = 4096
 // This function is the core logic that can be easily unit tested with a mock provider.
 func Ask(ctx context.Context, p provider.Provider, cfg AskConfig, prompt string) (*AskResult, error) {
 	if p == nil {
-		return nil, errors.New("provider is nil")
+		return nil, &perrors.ConfigurationError{
+			Component: "LLM",
+			Setting:   "provider",
+			Reason:    "provider is nil",
+		}
 	}
 	if prompt == "" {
-		return nil, errors.New("prompt cannot be empty")
+		return nil, &perrors.ValidationError{
+			Field:  "prompt",
+			Reason: "prompt cannot be empty",
+		}
 	}
 
 	maxTokens := cfg.MaxTokens
@@ -76,11 +82,22 @@ func Ask(ctx context.Context, p provider.Provider, cfg AskConfig, prompt string)
 
 	resp, err := p.CreateChatCompletion(ctx, req)
 	if err != nil {
-		return nil, fmt.Errorf("chat completion failed: %w", err)
+		return nil, &perrors.LLMError{
+			Provider:  "omnillm",
+			Model:     cfg.Model,
+			Operation: "CreateChatCompletion",
+			Reason:    "chat completion failed",
+			Err:       err,
+		}
 	}
 
 	if len(resp.Choices) == 0 {
-		return nil, errors.New("no response choices returned")
+		return nil, &perrors.LLMError{
+			Provider:  "omnillm",
+			Model:     cfg.Model,
+			Operation: "CreateChatCompletion",
+			Reason:    "no response choices returned",
+		}
 	}
 
 	result := &AskResult{
@@ -100,13 +117,24 @@ func Ask(ctx context.Context, p provider.Provider, cfg AskConfig, prompt string)
 // The stream function is called for each chunk of the response.
 func AskStream(ctx context.Context, p provider.Provider, cfg AskConfig, prompt string, streamFn func(chunk string) error) error {
 	if p == nil {
-		return errors.New("provider is nil")
+		return &perrors.ConfigurationError{
+			Component: "LLM",
+			Setting:   "provider",
+			Reason:    "provider is nil",
+		}
 	}
 	if prompt == "" {
-		return errors.New("prompt cannot be empty")
+		return &perrors.ValidationError{
+			Field:  "prompt",
+			Reason: "prompt cannot be empty",
+		}
 	}
 	if streamFn == nil {
-		return errors.New("stream function is nil")
+		return &perrors.ConfigurationError{
+			Component: "LLM",
+			Setting:   "streamFn",
+			Reason:    "stream function is nil",
+		}
 	}
 
 	maxTokens := cfg.MaxTokens
@@ -136,7 +164,13 @@ func AskStream(ctx context.Context, p provider.Provider, cfg AskConfig, prompt s
 
 	stream, err := p.CreateChatCompletionStream(ctx, req)
 	if err != nil {
-		return fmt.Errorf("stream creation failed: %w", err)
+		return &perrors.LLMError{
+			Provider:  "omnillm",
+			Model:     cfg.Model,
+			Operation: "CreateChatCompletionStream",
+			Reason:    "stream creation failed",
+			Err:       err,
+		}
 	}
 	defer stream.Close()
 
@@ -146,14 +180,26 @@ func AskStream(ctx context.Context, p provider.Provider, cfg AskConfig, prompt s
 			break
 		}
 		if err != nil {
-			return fmt.Errorf("stream recv failed: %w", err)
+			return &perrors.LLMError{
+				Provider:  "omnillm",
+				Model:     cfg.Model,
+				Operation: "StreamRecv",
+				Reason:    "stream recv failed",
+				Err:       err,
+			}
 		}
 
 		if len(chunk.Choices) > 0 && chunk.Choices[0].Delta != nil {
 			delta := chunk.Choices[0].Delta.Content
 			if delta != "" {
 				if err := streamFn(delta); err != nil {
-					return fmt.Errorf("stream function failed: %w", err)
+					return &perrors.LLMError{
+						Provider:  "omnillm",
+						Model:     cfg.Model,
+						Operation: "StreamCallback",
+						Reason:    "stream function failed",
+						Err:       err,
+					}
 				}
 			}
 		}
@@ -166,7 +212,10 @@ func AskStream(ctx context.Context, p provider.Provider, cfg AskConfig, prompt s
 // If args is empty, it returns an error indicating stdin should be used.
 func BuildPromptFromArgs(args []string) (string, error) {
 	if len(args) == 0 {
-		return "", errors.New("no prompt provided: pass as arguments or pipe to stdin")
+		return "", &perrors.ValidationError{
+			Field:  "args",
+			Reason: "no prompt provided: pass as arguments or pipe to stdin",
+		}
 	}
 	return strings.Join(args, " "), nil
 }

@@ -4,9 +4,9 @@ package news
 
 import (
 	"context"
-	"fmt"
 	"strings"
 
+	perrors "github.com/grokify/polymarket-go/internal/errors"
 	"github.com/plexusone/omniserp"
 	"github.com/plexusone/omniserp/client"
 )
@@ -34,7 +34,12 @@ func NewSearcher(cfg SearcherConfig) (*Searcher, error) {
 		c, err = client.New()
 	}
 	if err != nil {
-		return nil, fmt.Errorf("creating search client: %w", err)
+		return nil, &perrors.ConfigurationError{
+			Component: "Searcher",
+			Setting:   "engine",
+			Reason:    "creating search client",
+			Err:       err,
+		}
 	}
 
 	return &Searcher{client: c}, nil
@@ -55,7 +60,12 @@ func (s *Searcher) SearchNews(ctx context.Context, query string, opts SearchOpti
 
 	result, err := s.client.SearchNewsNormalized(ctx, params)
 	if err != nil {
-		return nil, fmt.Errorf("searching news: %w", err)
+		return nil, &perrors.SearchError{
+			Engine: "omniserp",
+			Query:  query,
+			Reason: "news search failed",
+			Err:    err,
+		}
 	}
 
 	articles := make([]NewsArticle, len(result.NewsResults))
@@ -88,7 +98,12 @@ func (s *Searcher) SearchWeb(ctx context.Context, query string, opts SearchOptio
 
 	result, err := s.client.SearchNormalized(ctx, params)
 	if err != nil {
-		return nil, fmt.Errorf("searching web: %w", err)
+		return nil, &perrors.SearchError{
+			Engine: "omniserp",
+			Query:  query,
+			Reason: "web search failed",
+			Err:    err,
+		}
 	}
 
 	webResult := &WebSearchResult{
@@ -137,7 +152,12 @@ func (s *Searcher) ScrapeWebpage(ctx context.Context, url string) (*ScrapedConte
 		URL: url,
 	})
 	if err != nil {
-		return nil, fmt.Errorf("scraping webpage: %w", err)
+		return nil, &perrors.SearchError{
+			Engine: "omniserp",
+			Query:  url,
+			Reason: "webpage scrape failed",
+			Err:    err,
+		}
 	}
 
 	// Result.Data contains the scraped content

@@ -10,6 +10,8 @@ import (
 	"net/url"
 	"strconv"
 	"time"
+
+	perrors "github.com/grokify/polymarket-go/internal/errors"
 )
 
 const (
@@ -69,8 +71,8 @@ func NewClient(opts ...ClientOption) *Client {
 }
 
 // doGet performs a GET request and decodes the JSON response into result.
-func (c *Client) doGet(ctx context.Context, url string, result any) error {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+func (c *Client) doGet(ctx context.Context, reqURL string, result any) error {
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, reqURL, nil)
 	if err != nil {
 		return fmt.Errorf("creating request: %w", err)
 	}
@@ -79,13 +81,22 @@ func (c *Client) doGet(ctx context.Context, url string, result any) error {
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return fmt.Errorf("executing request: %w", err)
+		return &perrors.NetworkError{
+			Operation: "GET " + reqURL,
+			Host:      req.URL.Host,
+			Err:       err,
+		}
 	}
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		body, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("API error: status %d, body: %s", resp.StatusCode, string(body))
+		return &perrors.APIError{
+			Service:    "Polymarket",
+			Operation:  "GET " + req.URL.Path,
+			StatusCode: resp.StatusCode,
+			Body:       truncateBody(string(body), 500),
+		}
 	}
 
 	if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
@@ -93,6 +104,14 @@ func (c *Client) doGet(ctx context.Context, url string, result any) error {
 	}
 
 	return nil
+}
+
+// truncateBody truncates a response body to maxLen characters.
+func truncateBody(body string, maxLen int) string {
+	if len(body) <= maxLen {
+		return body
+	}
+	return body[:maxLen] + "..."
 }
 
 // Market represents a Polymarket prediction market.
@@ -199,13 +218,22 @@ func (c *Client) GetMarkets(ctx context.Context, params GetMarketsParams) ([]Mar
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("executing request: %w", err)
+		return nil, &perrors.NetworkError{
+			Operation: "GetMarkets",
+			Host:      u.Host,
+			Err:       err,
+		}
 	}
 	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		body, _ := io.ReadAll(resp.Body)
-		return nil, fmt.Errorf("API error: status %d, body: %s", resp.StatusCode, string(body))
+		return nil, &perrors.APIError{
+			Service:    "Polymarket",
+			Operation:  "GetMarkets",
+			StatusCode: resp.StatusCode,
+			Body:       truncateBody(string(body), 500),
+		}
 	}
 
 	var markets []Market
