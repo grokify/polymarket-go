@@ -235,7 +235,7 @@ func (gs *GraphStore) LinkSiblingMarkets(ctx context.Context, eventID string, ma
 	for i := 0; i < len(marketIDs); i++ {
 		for j := i + 1; j < len(marketIDs); j++ {
 			edge := graph.Edge{
-				From:   marketIDs[i],
+				From:   marketIDs[i], //nolint:gosec // G602: loop bounds ensure i < len(marketIDs)
 				To:     marketIDs[j],
 				Type:   EdgeTypeSameEvent,
 				Weight: 0.9,
