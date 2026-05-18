@@ -177,8 +177,8 @@ Production readiness and tooling.
   - [x] Retry with exponential backoff (`internal/resilience/retry.go`)
   - [x] Circuit breakers for external services (`internal/resilience/circuitbreaker.go`)
   - [x] Structured error types (`internal/errors/`) with Retryable and HTTPStatusCoder interfaces
+  - [x] Integrate structured errors into polymarket, llm, news, executor packages
   - [ ] Graceful degradation
-  - [ ] Integrate structured errors into all packages
 
 ## SDK Integration
 
