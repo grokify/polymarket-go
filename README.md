@@ -36,6 +36,7 @@ Go SDK for building AI trading agents on [Polymarket](https://polymarket.com) pr
 - 🤖 **Multi-Agent Workflows** - Define agent teams using [multi-agent-spec](https://github.com/plexusone/multi-agent-spec) format
 - 🧠 **LLM Integration** - Works with any LLM via [omnillm](https://github.com/plexusone/omnillm) + [LangChainGo](https://github.com/tmc/langchaingo)
 - 🛡️ **Resilience Patterns** - Retry with backoff, circuit breakers for external services
+- ⚠️ **Structured Errors** - Production-ready error types with retryable detection and HTTP status mapping
 - 🔌 **OmniAgent Integration** - Compiled skill wrapper for embedding in [omniagent](https://github.com/plexusone/omniagent)-based agents
 
 ## Installation
@@ -60,6 +61,10 @@ polymarket-agent markets analyze --limit=1
 
 # Search news
 polymarket-agent news "bitcoin ETF"
+
+# Ask LLM ad-hoc questions
+polymarket-agent ask "What are prediction markets?"
+polymarket-agent ask --system "You are a trading expert" "Explain limit orders"
 
 # Semantic search with RAG
 polymarket-agent rag index --limit=100
@@ -143,6 +148,8 @@ results, _ := store.SearchMarkets(ctx, "cryptocurrency regulation", 10)
 │  ├── news/                 News & web search (omniserp)         │
 │  ├── prompts/              LLM prompts (superforecaster, etc.)  │
 │  ├── resilience/           Retry, circuit breaker patterns      │
+│  ├── errors/               Structured error types               │
+│  ├── llm/                  LLM utilities (ask command)          │
 │  ├── executor/             Workflow execution engine            │
 │  └── tools/                Agent tools for Polymarket           │
 ├─────────────────────────────────────────────────────────────────┤

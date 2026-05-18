@@ -7,6 +7,46 @@
   "maintainers": ["grokify", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.3.0",
+      "date": "2026-05-18",
+      "highlights": [
+        { "description": "REST API server with Huma and Chi for HTTP API with automatic OpenAPI generation" },
+        { "description": "GraphRAG for relationship-aware market retrieval with knowledge graph traversal" },
+        { "description": "Resilience patterns including retry with exponential backoff and circuit breakers" },
+        { "description": "Structured error types for programmatic error handling across all packages" }
+      ],
+      "added": [
+        { "description": "REST API server with Huma framework and Chi router", "commit": "8d07607" },
+        { "description": "GraphRAG for relationship-aware retrieval with knowledge graph traversal", "commit": "91c1c32" },
+        { "description": "Retry with exponential backoff and circuit breaker resilience patterns", "commit": "3b46407" },
+        { "description": "RAG-based filtering and chunk processing for events and markets", "commit": "9feee3f" },
+        { "description": "News and web search integration via omniserp", "commit": "e91cd49" },
+        { "description": "`ask` CLI command for ad-hoc LLM queries with streaming support", "commit": "62e916c" },
+        { "description": "Structured error types package with retryable and HTTP status interfaces", "commit": "09d6555" }
+      ],
+      "changed": [
+        { "description": "Renamed omnillm-langchaingo to langchaingo-omnillm", "commit": "aeeb09c" },
+        { "description": "Updated omniretrieve import path to plexusone organization", "commit": "8a8f1c4" }
+      ],
+      "fixed": [
+        { "description": "Resolved golangci-lint issues (gofmt, ineffassign, unused)", "commit": "3c7631d" }
+      ],
+      "documentation": [
+        { "description": "Architecture Decision Records (ADRs) for key design decisions", "commit": "e3a3310" },
+        { "description": "Restructured docs/design to docs/specs for better organization", "commit": "d4a9cca" },
+        { "description": "Updated documentation for REST server and new features", "commit": "b49871f" },
+        { "description": "Added UTF8 icons to README features section", "commit": "81c38d6" }
+      ],
+      "tests": [
+        { "description": "Unit tests for resilience, server, and news packages", "commit": "fe56004" },
+        { "description": "Unit tests for RAG store and tools packages", "commit": "184201f" },
+        { "description": "Unit tests for prompts, graphrag, and embedder packages", "commit": "6e161c6" }
+      ],
+      "dependencies": [
+        { "description": "omniagent v0.8.0", "commit": "35998aa" }
+      ]
+    },
+    {
       "version": "v0.2.0",
       "date": "2026-04-27",
       "highlights": [

@@ -11,6 +11,7 @@ Go SDK for building AI trading agents on [Polymarket](https://polymarket.com) pr
 - **Multi-Agent Workflows** - Define agent teams using [multi-agent-spec](https://github.com/plexusone/multi-agent-spec) format
 - **LLM Integration** - Works with any LLM via [omnillm](https://github.com/plexusone/omnillm) + [LangChainGo](https://github.com/tmc/langchaingo)
 - **Resilience Patterns** - Retry with backoff, circuit breakers for external services
+- **Structured Errors** - Production-ready error types with retryable detection and HTTP status mapping
 
 ## Architecture
 
@@ -27,6 +28,8 @@ Go SDK for building AI trading agents on [Polymarket](https://polymarket.com) pr
 │  ├── news/                 News & web search (omniserp)          │
 │  ├── prompts/              LLM prompts (superforecaster, etc.)   │
 │  ├── resilience/           Retry, circuit breaker patterns       │
+│  ├── errors/               Structured error types                │
+│  ├── llm/                  LLM utilities (ask command)           │
 │  ├── executor/             Workflow execution engine             │
 │  └── tools/                Agent tools for Polymarket            │
 ├─────────────────────────────────────────────────────────────────┤
