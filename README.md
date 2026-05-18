@@ -29,14 +29,14 @@ Go SDK for building AI trading agents on [Polymarket](https://polymarket.com) pr
 
 ## Features
 
-- **Polymarket API Client** - Full client for Gamma (markets) and CLOB (trading) APIs
-- **REST API Server** - HTTP API with automatic OpenAPI spec generation (Huma + Chi)
-- **RAG & GraphRAG** - Semantic search over markets with knowledge graph traversal
-- **News & Web Search** - Real-time news and web search via omniserp
-- **Multi-Agent Workflows** - Define agent teams using [multi-agent-spec](https://github.com/plexusone/multi-agent-spec) format
-- **LLM Integration** - Works with any LLM via [omnillm](https://github.com/plexusone/omnillm) + [LangChainGo](https://github.com/tmc/langchaingo)
-- **Resilience Patterns** - Retry with backoff, circuit breakers for external services
-- **OmniAgent Integration** - Compiled skill wrapper for embedding in [omniagent](https://github.com/plexusone/omniagent)-based agents
+- 📊 **Polymarket API Client** - Full client for Gamma (markets) and CLOB (trading) APIs
+- 🌐 **REST API Server** - HTTP API with automatic OpenAPI spec generation (Huma + Chi)
+- 🔍 **RAG & GraphRAG** - Semantic search over markets with knowledge graph traversal
+- 📰 **News & Web Search** - Real-time news and web search via omniserp
+- 🤖 **Multi-Agent Workflows** - Define agent teams using [multi-agent-spec](https://github.com/plexusone/multi-agent-spec) format
+- 🧠 **LLM Integration** - Works with any LLM via [omnillm](https://github.com/plexusone/omnillm) + [LangChainGo](https://github.com/tmc/langchaingo)
+- 🛡️ **Resilience Patterns** - Retry with backoff, circuit breakers for external services
+- 🔌 **OmniAgent Integration** - Compiled skill wrapper for embedding in [omniagent](https://github.com/plexusone/omniagent)-based agents
 
 ## Installation
 
