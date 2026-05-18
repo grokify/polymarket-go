@@ -4,8 +4,8 @@ package executor
 import (
 	"context"
 
-	"github.com/plexusone/omnillm-core/provider"
 	omnillm "github.com/plexusone/langchaingo-omnillm"
+	"github.com/plexusone/omnillm-core/provider"
 	"github.com/tmc/langchaingo/llms"
 )
 

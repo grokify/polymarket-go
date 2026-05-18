@@ -134,7 +134,7 @@ func TestRetryNonRetryableError(t *testing.T) {
 
 	// Test retryable error retries
 	attempts = 0
-	_, err = Retry(ctx, cfg, func(ctx context.Context) (string, error) {
+	_, _ = Retry(ctx, cfg, func(ctx context.Context) (string, error) {
 		attempts++
 		return "", retryableErr
 	})

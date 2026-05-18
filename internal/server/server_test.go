@@ -1,7 +1,6 @@
 package server
 
 import (
-	"context"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
@@ -10,59 +9,6 @@ import (
 
 	"github.com/grokify/polymarket-go/internal/polymarket"
 )
-
-// mockPolymarketClient implements a mock Polymarket client for testing.
-type mockPolymarketClient struct {
-	markets   []polymarket.Market
-	market    *polymarket.Market
-	orderBook *polymarket.OrderBook
-	price     *polymarket.Price
-	midPrice  *polymarket.MidPrice
-	spread    *polymarket.Spread
-	err       error
-}
-
-func (m *mockPolymarketClient) GetMarkets(ctx context.Context, params polymarket.GetMarketsParams) ([]polymarket.Market, error) {
-	if m.err != nil {
-		return nil, m.err
-	}
-	return m.markets, nil
-}
-
-func (m *mockPolymarketClient) GetMarket(ctx context.Context, conditionID string) (*polymarket.Market, error) {
-	if m.err != nil {
-		return nil, m.err
-	}
-	return m.market, nil
-}
-
-func (m *mockPolymarketClient) GetOrderBook(ctx context.Context, tokenID string) (*polymarket.OrderBook, error) {
-	if m.err != nil {
-		return nil, m.err
-	}
-	return m.orderBook, nil
-}
-
-func (m *mockPolymarketClient) GetPrice(ctx context.Context, tokenID string) (*polymarket.Price, error) {
-	if m.err != nil {
-		return nil, m.err
-	}
-	return m.price, nil
-}
-
-func (m *mockPolymarketClient) GetMidPrice(ctx context.Context, tokenID string) (*polymarket.MidPrice, error) {
-	if m.err != nil {
-		return nil, m.err
-	}
-	return m.midPrice, nil
-}
-
-func (m *mockPolymarketClient) GetSpread(ctx context.Context, tokenID string) (*polymarket.Spread, error) {
-	if m.err != nil {
-		return nil, m.err
-	}
-	return m.spread, nil
-}
 
 func TestNewServer(t *testing.T) {
 	cfg := Config{
