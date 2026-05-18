@@ -10,26 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://grokify.github.io/polymarket-go/">
+        <link rel="canonical" href="https://grokify.github.io/polymarket-go/specs/adr/0001-use-polymarket-go-sdk/">
       
       
+        <link rel="prev" href="../">
       
-        <link rel="next" href="getting-started/installation/">
+      
+        <link rel="next" href="../0002-use-cobra-for-cli/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
-        <title>polymarket-go</title>
+        <title>ADR-0001: polymarket-go-sdk - polymarket-go</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#polymarket-go" class="md-skip">
+        <a href="#adr-0001-use-polymarket-go-sdk-for-trading-infrastructure" class="md-skip">
           Skip to content
         </a>
       
@@ -88,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="polymarket-go" class="md-header__button md-logo" aria-label="polymarket-go" data-md-component="logo">
+    <a href="../../.." title="polymarket-go" class="md-header__button md-logo" aria-label="polymarket-go" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              ADR-0001: polymarket-go-sdk
             
           </span>
         </div>
@@ -219,11 +221,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -244,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="getting-started/installation/" class="md-tabs__link">
+        <a href="../../../getting-started/installation/" class="md-tabs__link">
           
   
   
@@ -264,7 +264,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="api/rest-server/" class="md-tabs__link">
+        <a href="../../../api/rest-server/" class="md-tabs__link">
           
   
   
@@ -284,7 +284,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="agents/" class="md-tabs__link">
+        <a href="../../../agents/" class="md-tabs__link">
           
   
   
@@ -300,11 +300,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="specs/ROADMAP/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../ROADMAP/" class="md-tabs__link">
           
   
   
@@ -324,7 +326,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="releases/CHANGELOG/" class="md-tabs__link">
+        <a href="../../../releases/CHANGELOG/" class="md-tabs__link">
           
   
   
@@ -358,7 +360,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="polymarket-go" class="md-nav__button md-logo" aria-label="polymarket-go" data-md-component="logo">
+    <a href="../../.." title="polymarket-go" class="md-nav__button md-logo" aria-label="polymarket-go" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -385,32 +387,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Home
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -421,71 +401,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Features
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      Architecture
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#agent-team" class="md-nav__link">
-    <span class="md-ellipsis">
-      Agent Team
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quick Links
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dependencies
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -542,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/installation/" class="md-nav__link">
+      <a href="../../../getting-started/installation/" class="md-nav__link">
         
   
   
@@ -565,7 +480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/quickstart/" class="md-nav__link">
+      <a href="../../../getting-started/quickstart/" class="md-nav__link">
         
   
   
@@ -588,7 +503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="getting-started/cli/" class="md-nav__link">
+      <a href="../../../getting-started/cli/" class="md-nav__link">
         
   
   
@@ -663,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/rest-server/" class="md-nav__link">
+      <a href="../../../api/rest-server/" class="md-nav__link">
         
   
   
@@ -686,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/polymarket/" class="md-nav__link">
+      <a href="../../../api/polymarket/" class="md-nav__link">
         
   
   
@@ -709,7 +624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/executor/" class="md-nav__link">
+      <a href="../../../api/executor/" class="md-nav__link">
         
   
   
@@ -732,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/loader/" class="md-nav__link">
+      <a href="../../../api/loader/" class="md-nav__link">
         
   
   
@@ -807,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="agents/" class="md-nav__link">
+      <a href="../../../agents/" class="md-nav__link">
         
   
   
@@ -830,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="agents/market-analyst/" class="md-nav__link">
+      <a href="../../../agents/market-analyst/" class="md-nav__link">
         
   
   
@@ -853,7 +768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="agents/superforecaster/" class="md-nav__link">
+      <a href="../../../agents/superforecaster/" class="md-nav__link">
         
   
   
@@ -876,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="agents/trader/" class="md-nav__link">
+      <a href="../../../agents/trader/" class="md-nav__link">
         
   
   
@@ -899,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="agents/team/" class="md-nav__link">
+      <a href="../../../agents/team/" class="md-nav__link">
         
   
   
@@ -926,28 +841,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -960,7 +878,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Specifications
@@ -974,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/ROADMAP/" class="md-nav__link">
+      <a href="../../ROADMAP/" class="md-nav__link">
         
   
   
@@ -997,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/TRD/" class="md-nav__link">
+      <a href="../../TRD/" class="md-nav__link">
         
   
   
@@ -1020,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/COMPONENTS/" class="md-nav__link">
+      <a href="../../COMPONENTS/" class="md-nav__link">
         
   
   
@@ -1040,28 +958,31 @@
                 
   
   
+    
   
   
+  
     
     
     
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
         
           
+          
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
             
   
   
@@ -1074,7 +995,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             Architecture Decisions
@@ -1088,7 +1009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/adr/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1108,10 +1029,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="specs/adr/0001-use-polymarket-go-sdk/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ADR-0001: polymarket-go-sdk
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1122,6 +1065,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consequences
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1134,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/adr/0002-use-cobra-for-cli/" class="md-nav__link">
+      <a href="../0002-use-cobra-for-cli/" class="md-nav__link">
         
   
   
@@ -1157,7 +1156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/adr/0003-use-omniretrieve-for-rag/" class="md-nav__link">
+      <a href="../0003-use-omniretrieve-for-rag/" class="md-nav__link">
         
   
   
@@ -1180,7 +1179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/adr/0004-use-omniserp-for-search/" class="md-nav__link">
+      <a href="../0004-use-omniserp-for-search/" class="md-nav__link">
         
   
   
@@ -1203,7 +1202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/adr/0005-use-omnillm-for-llm-abstraction/" class="md-nav__link">
+      <a href="../0005-use-omnillm-for-llm-abstraction/" class="md-nav__link">
         
   
   
@@ -1226,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/adr/0006-resilience-patterns/" class="md-nav__link">
+      <a href="../0006-resilience-patterns/" class="md-nav__link">
         
   
   
@@ -1249,7 +1248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/adr/0007-graphrag-knowledge-graph-design/" class="md-nav__link">
+      <a href="../0007-graphrag-knowledge-graph-design/" class="md-nav__link">
         
   
   
@@ -1272,7 +1271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="specs/adr/0008-rest-server-with-huma-chi/" class="md-nav__link">
+      <a href="../0008-rest-server-with-huma-chi/" class="md-nav__link">
         
   
   
@@ -1355,7 +1354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="releases/CHANGELOG/" class="md-nav__link">
+      <a href="../../../releases/CHANGELOG/" class="md-nav__link">
         
   
   
@@ -1378,7 +1377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="releases/v0.2.0/" class="md-nav__link">
+      <a href="../../../releases/v0.2.0/" class="md-nav__link">
         
   
   
@@ -1401,7 +1400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="releases/v0.1.0/" class="md-nav__link">
+      <a href="../../../releases/v0.1.0/" class="md-nav__link">
         
   
   
@@ -1451,45 +1450,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
+      Status
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
+  <a href="#context" class="md-nav__link">
     <span class="md-ellipsis">
-      Architecture
+      Context
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#agent-team" class="md-nav__link">
+  <a href="#decision" class="md-nav__link">
     <span class="md-ellipsis">
-      Agent Team
+      Decision
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-links" class="md-nav__link">
+  <a href="#consequences" class="md-nav__link">
     <span class="md-ellipsis">
-      Quick Links
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dependencies
+      Consequences
     </span>
   </a>
   
@@ -1514,118 +1504,49 @@
   
 
 
-<h1 id="polymarket-go">polymarket-go<a class="headerlink" href="#polymarket-go" title="Permanent link">&para;</a></h1>
-<p>Go SDK for building AI trading agents on <a href="https://polymarket.com">Polymarket</a> prediction markets.</p>
-<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<h1 id="adr-0001-use-polymarket-go-sdk-for-trading-infrastructure">ADR-0001: Use polymarket-go-sdk for Trading Infrastructure<a class="headerlink" href="#adr-0001-use-polymarket-go-sdk-for-trading-infrastructure" title="Permanent link">&para;</a></h1>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
+<p>Accepted</p>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
+<p>Building a Polymarket trading agent requires:</p>
 <ul>
-<li><strong>Polymarket API Client</strong> - Full client for Gamma (markets) and CLOB (trading) APIs</li>
-<li><strong>REST API Server</strong> - HTTP API with automatic OpenAPI spec generation (Huma + Chi)</li>
-<li><strong>RAG &amp; GraphRAG</strong> - Semantic search over markets with knowledge graph traversal</li>
-<li><strong>News &amp; Web Search</strong> - Real-time news and web search via omniserp</li>
-<li><strong>Multi-Agent Workflows</strong> - Define agent teams using <a href="https://github.com/plexusone/multi-agent-spec">multi-agent-spec</a> format</li>
-<li><strong>LLM Integration</strong> - Works with any LLM via <a href="https://github.com/plexusone/omnillm">omnillm</a> + <a href="https://github.com/tmc/langchaingo">LangChainGo</a></li>
-<li><strong>Resilience Patterns</strong> - Retry with backoff, circuit breakers for external services</li>
+<li>EIP-712 order signing for the CLOB API</li>
+<li>WebSocket connections for real-time data</li>
+<li>Wallet management and token approvals</li>
+<li>Complex order building with proper nonces and expirations</li>
 </ul>
-<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────────────┐
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│  polymarket-go                                                   │
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├─────────────────────────────────────────────────────────────────┤
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  cmd/polymarket-agent/     CLI and REST server                   │
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├─────────────────────────────────────────────────────────────────┤
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  internal/                                                       │
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│  ├── server/               REST API (Huma + Chi)                 │
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  ├── polymarket/           Polymarket API client                 │
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  ├── rag/                  RAG &amp; GraphRAG retrieval              │
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│  ├── news/                 News &amp; web search (omniserp)          │
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  ├── prompts/              LLM prompts (superforecaster, etc.)   │
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│  ├── resilience/           Retry, circuit breaker patterns       │
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│  ├── executor/             Workflow execution engine             │
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│  └── tools/                Agent tools for Polymarket            │
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>├─────────────────────────────────────────────────────────────────┤
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│  omniagent/skill/          Compiled skill for omniagent          │
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>├─────────────────────────────────────────────────────────────────┤
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│  agents/specs/             Multi-agent-spec definitions          │
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>└─────────────────────────────────────────────────────────────────┘
-</code></pre></div>
-<h2 id="agent-team">Agent Team<a class="headerlink" href="#agent-team" title="Permanent link">&para;</a></h2>
-<p>The default trading team consists of three agents in a graph workflow:</p>
-<table>
-<thead>
-<tr>
-<th>Agent</th>
-<th>Role</th>
-<th>Model</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="agents/market-analyst/"><strong>market-analyst</strong></a></td>
-<td>Discovers trading opportunities</td>
-<td>sonnet</td>
-</tr>
-<tr>
-<td><a href="agents/superforecaster/"><strong>superforecaster</strong></a></td>
-<td>Generates probability estimates</td>
-<td>sonnet</td>
-</tr>
-<tr>
-<td><a href="agents/trader/"><strong>trader</strong></a></td>
-<td>Executes trades based on analysis</td>
-<td>haiku</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Workflow:</strong> <code>discover → forecast → execute</code></p>
-<h2 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h2>
+<p>Implementing these from scratch would require significant effort and deep understanding of Polymarket's trading protocol.</p>
+<h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
+<p>Use <a href="https://github.com/GoPolymarket/polymarket-go-sdk">GoPolymarket/polymarket-go-sdk</a> as the foundation for all trading operations.</p>
+<p>The SDK provides:</p>
 <ul>
-<li><a href="getting-started/installation/">Installation</a></li>
-<li><a href="getting-started/quickstart/">Quick Start</a></li>
-<li><a href="getting-started/cli/">CLI Reference</a></li>
-<li><a href="api/rest-server/">REST API Reference</a></li>
-<li><a href="api/polymarket/">Polymarket Client</a></li>
-<li><a href="specs/adr/">Architecture Decisions</a></li>
-<li><a href="specs/ROADMAP/">Roadmap</a></li>
-<li><a href="releases/CHANGELOG/">Changelog</a></li>
+<li>Full CLOB REST API client</li>
+<li>WebSocket streaming with auto-reconnect</li>
+<li>EIP-712 order signing</li>
+<li>Order builder with fluent API</li>
+<li>Gamma API for market metadata</li>
+<li>High-precision decimal handling</li>
+<li>AWS KMS signer support</li>
 </ul>
-<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Package</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/GoPolymarket/polymarket-go-sdk">polymarket-go-sdk</a></td>
-<td>Polymarket trading SDK</td>
-</tr>
-<tr>
-<td><a href="https://github.com/danielgtaylor/huma">huma</a></td>
-<td>REST API with OpenAPI generation</td>
-</tr>
-<tr>
-<td><a href="https://github.com/go-chi/chi">chi</a></td>
-<td>HTTP router</td>
-</tr>
-<tr>
-<td><a href="https://github.com/plexusone/omnillm-core">omnillm-core</a></td>
-<td>LLM provider abstraction</td>
-</tr>
-<tr>
-<td><a href="https://github.com/plexusone/omniretrieve">omniretrieve</a></td>
-<td>RAG &amp; GraphRAG retrieval</td>
-</tr>
-<tr>
-<td><a href="https://github.com/plexusone/omniserp">omniserp</a></td>
-<td>News &amp; web search</td>
-</tr>
-<tr>
-<td><a href="https://github.com/tmc/langchaingo">langchaingo</a></td>
-<td>Go LLM framework</td>
-</tr>
-</tbody>
-</table>
+<h2 id="consequences">Consequences<a class="headerlink" href="#consequences" title="Permanent link">&para;</a></h2>
+<p><strong>Positive:</strong></p>
+<ul>
+<li>Significantly reduced development time for Phase 1</li>
+<li>Battle-tested signing and order logic</li>
+<li>Maintained by the community</li>
+<li>Supports both private key and KMS signing</li>
+</ul>
+<p><strong>Negative:</strong></p>
+<ul>
+<li>External dependency we don't control</li>
+<li>Must adapt to SDK's API design</li>
+<li>Version updates may require code changes</li>
+</ul>
+<p><strong>Mitigations:</strong></p>
+<ul>
+<li>Wrapped SDK in <code>internal/polymarket/sdk.go</code> for abstraction</li>
+<li>Can fork if needed for critical fixes</li>
+</ul>
 
 
 
@@ -1696,10 +1617,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
     
   </body>

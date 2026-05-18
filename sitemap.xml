@@ -2,70 +2,114 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://grokify.github.io/polymarket-go/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/agents/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/agents/market-analyst/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/agents/superforecaster/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/agents/team/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/agents/trader/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/api/executor/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/api/loader/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/api/polymarket/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/polymarket-go/design/COMPONENTS/</loc>
-         <lastmod>2026-04-27</lastmod>
-    </url>
-    <url>
-         <loc>https://grokify.github.io/polymarket-go/design/TRD/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <loc>https://grokify.github.io/polymarket-go/api/rest-server/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/getting-started/cli/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/getting-started/installation/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/getting-started/quickstart/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/releases/CHANGELOG/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/releases/v0.1.0/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
     </url>
     <url>
          <loc>https://grokify.github.io/polymarket-go/releases/v0.2.0/</loc>
-         <lastmod>2026-04-27</lastmod>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/COMPONENTS/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/ROADMAP/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/TRD/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/adr/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/adr/0001-use-polymarket-go-sdk/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/adr/0002-use-cobra-for-cli/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/adr/0003-use-omniretrieve-for-rag/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/adr/0004-use-omniserp-for-search/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/adr/0005-use-omnillm-for-llm-abstraction/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/adr/0006-resilience-patterns/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/adr/0007-graphrag-knowledge-graph-design/</loc>
+         <lastmod>2026-05-18</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/polymarket-go/specs/adr/0008-rest-server-with-huma-chi/</loc>
+         <lastmod>2026-05-18</lastmod>
     </url>
 </urlset>
