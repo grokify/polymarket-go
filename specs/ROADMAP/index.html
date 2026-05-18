@@ -1602,8 +1602,8 @@
 <tbody>
 <tr>
 <td>1</td>
-<td><strong>Testing</strong></td>
-<td>Required for production readiness and CI/CD</td>
+<td><strong>Boost Test Coverage</strong></td>
+<td>news (20%), server (27%) need integration tests</td>
 </tr>
 <tr>
 <td>2</td>
@@ -1617,8 +1617,13 @@
 </tr>
 <tr>
 <td>4</td>
-<td><strong>Structured Error Types</strong></td>
-<td>Better error handling and debugging</td>
+<td><strong>Persistent RAG Store</strong></td>
+<td>pgvector for production RAG persistence</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Trade Execution</strong></td>
+<td>Implement actual order placement (currently stubbed)</td>
 </tr>
 </tbody>
 </table>
@@ -1796,7 +1801,7 @@
 <li>[x] <code>rag index</code> - Build local RAG index (markets/events)</li>
 <li>[x] <code>rag search</code> - Query RAG index semantically</li>
 <li>
-<p>[ ] <code>ask-llm</code> - General LLM queries</p>
+<p>[x] <code>ask</code> - Ad-hoc LLM queries with streaming support</p>
 </li>
 <li>
 <p>[x] <strong>REST Server</strong> - HTTP API (Huma + Chi)</p>
@@ -1819,20 +1824,22 @@
 <li>
 <p>[ ] <strong>Testing</strong> - Comprehensive test suite</p>
 </li>
-<li>[ ] Unit tests for all packages</li>
+<li>[x] Unit tests for resilience (98%), llm (96%), loader (82%), errors (80%), prompts (75%), rag (67%), executor (66%), tools (59%), polymarket (39%)</li>
+<li>[ ] Unit tests for news (20%), server (27%) - require external service mocks</li>
 <li>[ ] Integration tests for API clients</li>
 <li>[ ] Agent behavior tests</li>
 <li>
-<p>[ ] Mock LLM responses for testing</p>
+<p>[x] Mock LLM responses for testing (<code>internal/prompts/agent_test.go</code>)</p>
 </li>
 <li>
-<p>[x] <strong>Error Handling</strong> - Resilience patterns (partial)</p>
+<p>[x] <strong>Error Handling</strong> - Resilience patterns</p>
 </li>
 <li>[x] Built-in retries via polymarket-go-sdk</li>
 <li>[x] Retry with exponential backoff (<code>internal/resilience/retry.go</code>)</li>
 <li>[x] Circuit breakers for external services (<code>internal/resilience/circuitbreaker.go</code>)</li>
+<li>[x] Structured error types (<code>internal/errors/</code>) with Retryable and HTTPStatusCoder interfaces</li>
 <li>[ ] Graceful degradation</li>
-<li>[ ] Structured error types</li>
+<li>[ ] Integrate structured errors into all packages</li>
 </ul>
 <h2 id="sdk-integration">SDK Integration<a class="headerlink" href="#sdk-integration" title="Permanent link">&para;</a></h2>
 <p>Using <a href="https://github.com/GoPolymarket/polymarket-go-sdk">GoPolymarket/polymarket-go-sdk</a> v1.1.0 for:</p>
