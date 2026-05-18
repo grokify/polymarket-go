@@ -1525,6 +1525,7 @@
 <li><strong>Multi-Agent Workflows</strong> - Define agent teams using <a href="https://github.com/plexusone/multi-agent-spec">multi-agent-spec</a> format</li>
 <li><strong>LLM Integration</strong> - Works with any LLM via <a href="https://github.com/plexusone/omnillm">omnillm</a> + <a href="https://github.com/tmc/langchaingo">LangChainGo</a></li>
 <li><strong>Resilience Patterns</strong> - Retry with backoff, circuit breakers for external services</li>
+<li><strong>Structured Errors</strong> - Production-ready error types with retryable detection and HTTP status mapping</li>
 </ul>
 <h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>┌─────────────────────────────────────────────────────────────────┐
@@ -1539,13 +1540,15 @@
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│  ├── news/                 News &amp; web search (omniserp)          │
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  ├── prompts/              LLM prompts (superforecaster, etc.)   │
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│  ├── resilience/           Retry, circuit breaker patterns       │
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│  ├── executor/             Workflow execution engine             │
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│  └── tools/                Agent tools for Polymarket            │
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>├─────────────────────────────────────────────────────────────────┤
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│  omniagent/skill/          Compiled skill for omniagent          │
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│  ├── errors/               Structured error types                │
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│  ├── llm/                  LLM utilities (ask command)           │
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│  ├── executor/             Workflow execution engine             │
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│  └── tools/                Agent tools for Polymarket            │
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>├─────────────────────────────────────────────────────────────────┤
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│  agents/specs/             Multi-agent-spec definitions          │
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>└─────────────────────────────────────────────────────────────────┘
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│  omniagent/skill/          Compiled skill for omniagent          │
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>├─────────────────────────────────────────────────────────────────┤
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│  agents/specs/             Multi-agent-spec definitions          │
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>└─────────────────────────────────────────────────────────────────┘
 </code></pre></div>
 <h2 id="agent-team">Agent Team<a class="headerlink" href="#agent-team" title="Permanent link">&para;</a></h2>
 <p>The default trading team consists of three agents in a graph workflow:</p>
