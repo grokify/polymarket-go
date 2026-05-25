@@ -8,7 +8,7 @@ require (
 	github.com/go-chi/chi/v5 v5.3.0
 	github.com/plexusone/langchaingo-omnillm v0.2.0
 	github.com/plexusone/omniagent v0.8.0
-	github.com/plexusone/omnillm-core v0.15.0
+	github.com/plexusone/omnillm-core v0.16.0
 	github.com/plexusone/omniretrieve v0.2.0
 	github.com/plexusone/omniserp v0.8.1
 	github.com/plexusone/omniskill v0.8.0
