@@ -5,7 +5,7 @@ go 1.26.1
 require (
 	github.com/GoPolymarket/polymarket-go-sdk v1.1.2
 	github.com/danielgtaylor/huma/v2 v2.38.0
-	github.com/go-chi/chi/v5 v5.2.5
+	github.com/go-chi/chi/v5 v5.3.0
 	github.com/plexusone/langchaingo-omnillm v0.2.0
 	github.com/plexusone/omniagent v0.8.0
 	github.com/plexusone/omnillm-core v0.15.0
