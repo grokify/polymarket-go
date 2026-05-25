@@ -11,7 +11,7 @@ require (
 	github.com/plexusone/omnillm-core v0.15.0
 	github.com/plexusone/omniretrieve v0.2.0
 	github.com/plexusone/omniserp v0.8.1
-	github.com/plexusone/omniskill v0.7.0
+	github.com/plexusone/omniskill v0.8.0
 	github.com/shopspring/decimal v1.4.0
 	github.com/spf13/cobra v1.10.2
 	github.com/tmc/langchaingo v0.1.14
@@ -55,5 +55,5 @@ require (
 	go.opentelemetry.io/otel/trace v1.43.0 // indirect
 	golang.org/x/crypto v0.51.0 // indirect
 	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.44.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
 )
