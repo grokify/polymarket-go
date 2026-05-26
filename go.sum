@@ -172,8 +172,8 @@ github.com/pkoukk/tiktoken-go v0.1.8 h1:85ENo+3FpWgAACBaEUVp+lctuTcYUO7BtmfhlN/Q
 github.com/pkoukk/tiktoken-go v0.1.8/go.mod h1:9NiV+i9mJKGj1rYOT+njbv+ZwA/zJxYdewGl6qVatpg=
 github.com/plexusone/langchaingo-omnillm v0.2.0 h1:z7EHR0rTy25uDLvJuJbjIJo1s5OmitGXwm3Bi4+jbDE=
 github.com/plexusone/langchaingo-omnillm v0.2.0/go.mod h1:aTiAHxj7AwmV3LkaXQ7Fno8meTLCB2rgCSyjIAvPj54=
-github.com/plexusone/omniagent v0.8.0 h1:UHmpAG7ltNEdQCaavSXWgRlVoKeEwxLk/gW2n6wuehk=
-github.com/plexusone/omniagent v0.8.0/go.mod h1:h4rkBebr8UDUnQGRmR3OJ2sKJcwmIIJNAgfC7+CEZZw=
+github.com/plexusone/omniagent v0.9.0 h1:bzoWol1o4R454ZRtonQ3VIpd+XOnSsrm3GFkhT6nyio=
+github.com/plexusone/omniagent v0.9.0/go.mod h1:9JfAcd8vmG8qnTeu6j9xEnePji0YapEZzamtLMsGaLE=
 github.com/plexusone/omnillm-core v0.16.0 h1:ClEEAaAl/jgn0nV65azRAulEkLoMtCZqnWQBJCBH5eU=
 github.com/plexusone/omnillm-core v0.16.0/go.mod h1:0KzNniPwHXVtfRgfyD3fAlaj8RDktQwRrxEFQrXbLtE=
 github.com/plexusone/omniretrieve v0.2.0 h1:Tx9EQJtE4d/i3CKjakCmcM1xNrh6cwCMT4EY5THwAUU=
@@ -244,8 +244,8 @@ go.opentelemetry.io/otel/trace v1.43.0/go.mod h1:/QJhyVBUUswCphDVxq+8mld+AvhXZLh
 go.uber.org/goleak v1.3.0 h1:2K3zAYmnTNqV73imy9J1T3WC+gmCePx2hEGkimedGto=
 go.uber.org/goleak v1.3.0/go.mod h1:CoHD4mav9JJNrW/WLlf7HGZPjdw8EucARQHekz1X6bE=
 go.yaml.in/yaml/v3 v3.0.4/go.mod h1:DhzuOOF2ATzADvBadXxruRBLzYTpT36CKvDb3+aBEFg=
-golang.org/x/crypto v0.51.0 h1:IBPXwPfKxY7cWQZ38ZCIRPI50YLeevDLlLnyC5wRGTI=
-golang.org/x/crypto v0.51.0/go.mod h1:8AdwkbraGNABw2kOX6YFPs3WM22XqI4EXEd8g+x7Oc8=
+golang.org/x/crypto v0.52.0 h1:RMs7fP2rXdep0CftQlK8Uf+kibLm7qkCcradZWYz988=
+golang.org/x/crypto v0.52.0/go.mod h1:1QgfPxDqh0T2M/elOJtp9RvuR95kVjir0e6/BvEmGbc=
 golang.org/x/exp v0.0.0-20260508232706-74f9aab9d74a h1:+3jdDGGB8NGb1Zktc737jlt3/A5f6UlwSzmvqUuufxw=
 golang.org/x/exp v0.0.0-20260508232706-74f9aab9d74a/go.mod h1:d2fgXJLVs4dYDHUk5lwMIfzRzSrWCfGZb0ZqeLa/Vcw=
 golang.org/x/net v0.55.0 h1:bcvxaJn3e1U6InsFWt1JUq1aSjnRxLzT2rtD2KfkDF8=
