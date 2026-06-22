@@ -11,7 +11,7 @@ require (
 	github.com/plexusone/omnillm-core v0.16.0
 	github.com/plexusone/omniretrieve v0.2.0
 	github.com/plexusone/omniserp v0.8.1
-	github.com/plexusone/omniskill v0.8.0
+	github.com/plexusone/omniskill v0.9.0
 	github.com/shopspring/decimal v1.4.0
 	github.com/spf13/cobra v1.10.2
 	github.com/tmc/langchaingo v0.1.14
@@ -36,7 +36,7 @@ require (
 	github.com/go-ole/go-ole v1.3.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
-	github.com/grokify/mogo v0.74.5 // indirect
+	github.com/grokify/mogo v0.74.6 // indirect
 	github.com/grokify/sogo v0.15.0 // indirect
 	github.com/holiman/uint256 v1.3.2 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
@@ -53,7 +53,7 @@ require (
 	go.opentelemetry.io/otel v1.43.0 // indirect
 	go.opentelemetry.io/otel/metric v1.43.0 // indirect
 	go.opentelemetry.io/otel/trace v1.43.0 // indirect
-	golang.org/x/crypto v0.51.0 // indirect
-	golang.org/x/sync v0.20.0 // indirect
-	golang.org/x/sys v0.45.0 // indirect
+	golang.org/x/crypto v0.52.0 // indirect
+	golang.org/x/sync v0.21.0 // indirect
+	golang.org/x/sys v0.46.0 // indirect
 )
