@@ -1,14 +1,14 @@
 module github.com/grokify/polymarket-go
 
-go 1.26.1
+go 1.26.4
 
 require (
 	github.com/GoPolymarket/polymarket-go-sdk v1.1.2
 	github.com/danielgtaylor/huma/v2 v2.38.0
 	github.com/go-chi/chi/v5 v5.3.0
 	github.com/plexusone/langchaingo-omnillm v0.2.0
-	github.com/plexusone/omniagent v0.8.0
-	github.com/plexusone/omnillm-core v0.16.0
+	github.com/plexusone/omniagent v0.11.0
+	github.com/plexusone/omnillm-core v0.17.0
 	github.com/plexusone/omniretrieve v0.2.0
 	github.com/plexusone/omniserp v0.9.0
 	github.com/plexusone/omniskill v0.9.0
@@ -41,7 +41,7 @@ require (
 	github.com/holiman/uint256 v1.3.2 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/pkoukk/tiktoken-go v0.1.8 // indirect
-	github.com/plexusone/omnistorage-core v0.4.0 // indirect
+	github.com/plexusone/omnistorage-core v0.5.0 // indirect
 	github.com/shirou/gopsutil v3.21.11+incompatible // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/supranational/blst v0.3.16 // indirect
@@ -50,10 +50,10 @@ require (
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	go.mongodb.org/mongo-driver v1.17.9 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
-	go.opentelemetry.io/otel v1.43.0 // indirect
-	go.opentelemetry.io/otel/metric v1.43.0 // indirect
-	go.opentelemetry.io/otel/trace v1.43.0 // indirect
-	golang.org/x/crypto v0.52.0 // indirect
+	go.opentelemetry.io/otel v1.44.0 // indirect
+	go.opentelemetry.io/otel/metric v1.44.0 // indirect
+	go.opentelemetry.io/otel/trace v1.44.0 // indirect
+	golang.org/x/crypto v0.53.0 // indirect
 	golang.org/x/sync v0.21.0 // indirect
 	golang.org/x/sys v0.46.0 // indirect
 )
