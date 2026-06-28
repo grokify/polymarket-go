@@ -176,8 +176,8 @@ github.com/plexusone/omniagent v0.11.0 h1:EWK6GqsRHgNtQ8CERwG6erMkdeB30T8P7USreO
 github.com/plexusone/omniagent v0.11.0/go.mod h1:qANxl7Sy0KQy+F+AuOvSRi73yk7dYKtdIxU8bzzRk2A=
 github.com/plexusone/omnillm-core v0.17.0 h1:mzM1yVt7sSFxHqNmyhoV6GxYsqfFOD/m1tWyv2qFpec=
 github.com/plexusone/omnillm-core v0.17.0/go.mod h1:180U/oa67fly3+T3h1sL/pBMvcjIKR+bvSEkAGnalMY=
-github.com/plexusone/omniretrieve v0.2.0 h1:Tx9EQJtE4d/i3CKjakCmcM1xNrh6cwCMT4EY5THwAUU=
-github.com/plexusone/omniretrieve v0.2.0/go.mod h1:JGRe0C7pUOp5mc1Uah+vQ8JcbLzBvTabfnzx9SFnC2c=
+github.com/plexusone/omniretrieve v0.3.0 h1:0Nm+hrt7Qj3ziDlKg2JlEgEmY7+G9ndYDf04s4MsfbA=
+github.com/plexusone/omniretrieve v0.3.0/go.mod h1:Ti/SzUb7oeqqE4ZS7iEk/dIXonCG7/jgv4g/IGRq4C4=
 github.com/plexusone/omniserp v0.9.0 h1:5E29+gnclbuDA3Oj16Gnh4lRCTkmlcupdpfFUOF2W6s=
 github.com/plexusone/omniserp v0.9.0/go.mod h1:xQ6ULoxBIEzbpjNCMuIoSyVVWNJoW1dyS016dx2jFjA=
 github.com/plexusone/omniskill v0.9.0 h1:QrOyJ2BWIpYcaW8lTtYxHQUWmLUq4+nAcW9CJ5OImm4=
