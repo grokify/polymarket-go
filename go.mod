@@ -7,7 +7,7 @@ require (
 	github.com/danielgtaylor/huma/v2 v2.38.0
 	github.com/go-chi/chi/v5 v5.3.0
 	github.com/plexusone/langchaingo-omnillm v0.2.0
-	github.com/plexusone/omniagent v0.11.0
+	github.com/plexusone/omniagent v0.12.0
 	github.com/plexusone/omnillm-core v0.17.0
 	github.com/plexusone/omniretrieve v0.3.0
 	github.com/plexusone/omniserp v0.9.0

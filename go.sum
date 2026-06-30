@@ -172,8 +172,8 @@ github.com/pkoukk/tiktoken-go v0.1.8 h1:85ENo+3FpWgAACBaEUVp+lctuTcYUO7BtmfhlN/Q
 github.com/pkoukk/tiktoken-go v0.1.8/go.mod h1:9NiV+i9mJKGj1rYOT+njbv+ZwA/zJxYdewGl6qVatpg=
 github.com/plexusone/langchaingo-omnillm v0.2.0 h1:z7EHR0rTy25uDLvJuJbjIJo1s5OmitGXwm3Bi4+jbDE=
 github.com/plexusone/langchaingo-omnillm v0.2.0/go.mod h1:aTiAHxj7AwmV3LkaXQ7Fno8meTLCB2rgCSyjIAvPj54=
-github.com/plexusone/omniagent v0.11.0 h1:EWK6GqsRHgNtQ8CERwG6erMkdeB30T8P7USreO35FrA=
-github.com/plexusone/omniagent v0.11.0/go.mod h1:qANxl7Sy0KQy+F+AuOvSRi73yk7dYKtdIxU8bzzRk2A=
+github.com/plexusone/omniagent v0.12.0 h1:K0UE1GXXnZOKJGYeVpo3y2kYaXNrpRuF6UJGvCYBBuc=
+github.com/plexusone/omniagent v0.12.0/go.mod h1:Ur205aKSBeqXuHdpGyDSvNXCLLWJU24SPpQ85pCn3kU=
 github.com/plexusone/omnillm-core v0.17.0 h1:mzM1yVt7sSFxHqNmyhoV6GxYsqfFOD/m1tWyv2qFpec=
 github.com/plexusone/omnillm-core v0.17.0/go.mod h1:180U/oa67fly3+T3h1sL/pBMvcjIKR+bvSEkAGnalMY=
 github.com/plexusone/omniretrieve v0.3.0 h1:0Nm+hrt7Qj3ziDlKg2JlEgEmY7+G9ndYDf04s4MsfbA=
